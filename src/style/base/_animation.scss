@@ -1,0 +1,35 @@
+.slide-fade-enter-active {
+  transition: all 1.3s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */
+
+  {
+  transform: translateX(20px);
+  opacity: 0;
+}
+
+.list-complete-item {
+  transition: all 1s;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.list-complete-enter,
+.list-complete-leave-to
+/* .list-complete-leave-active for below version 2.1.8 */
+
+  {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.list-complete-leave-active {
+  position: absolute;
+}

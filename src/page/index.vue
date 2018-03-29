@@ -1,15 +1,17 @@
 <template>
 	<div id="index">
 		<Header></Header>
-		<div class="article_list">
-			<ul>
-				<li v-for="i in list" :key="i.id">
-					<router-link :to="'/content/' + i.id" :id="i.id">
-						{{ i.value }}
-					</router-link>
-				</li>
-			</ul>
-		</div>
+    <transition name="slide-fade">
+      <div class="article_list" v-if="show">
+        <ul>
+          <li v-for="i in list" :key="i.id" class="list-complete-item">
+            <router-link :to="'/content/' + i.id" :id="i.id">
+              {{ i.value }}
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </transition>
 		<Footer></Footer>
 	</div>
 </template>
@@ -23,6 +25,7 @@ export default {
   },
   data() {
     return {
+      show: false,
       list: [
         {
           id: "js",
@@ -64,13 +67,21 @@ export default {
     };
   },
   created() {
+    let _self = this;
     this.$http.get("/api/name").then(response => {
       response = response.body;
       if (response.errno === 0) {
         console.log(response.data);
       }
     });
+    setTimeout(function() {
+      _self.show = true;
+    }, 500);
   },
-  methods: {}
+  methods: {
+    shuffle: function() {
+      this.list = _.shuffle(this.list);
+    }
+  }
 };
 </script>
