@@ -10,7 +10,11 @@ export default new Router({
   routes: [{
     path: '/',
     component: Login
-  }, {
+  },{
+    path: '/index',
+    component: Index
+  },
+  {
     path: '/content/:id',
     component: Content
   }],
