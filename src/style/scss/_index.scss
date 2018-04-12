@@ -3,7 +3,7 @@
 @import '../base/_animation';
 #app {
   height: 100%;
-  min-height: 734px;
+  min-height: 905px;
   .logo,
   .copy {
     text-align: center;
@@ -101,4 +101,5 @@
 #index {
   background: rebeccapurple;
   height: 100%;
+  min-width: 340px;
 }
