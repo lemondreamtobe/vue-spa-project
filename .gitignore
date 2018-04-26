@@ -16,5 +16,3 @@ selenium-debug.log
 *.njsproj
 *.sln
 .history
-index.js
-index.html

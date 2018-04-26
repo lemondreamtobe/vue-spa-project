@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "echarts": "^4.0.4",
+    "echarts-gl": "^1.1.0",
     "element-ui": "^2.3.3",
     "vue": "^2.5.2",
     "vue-echarts": "^3.0.7",
@@ -47,6 +48,7 @@
     "html-webpack-plugin": "^2.30.1",
     "jest": "^22.0.4",
     "jest-serializer-vue": "^0.3.0",
+    "jquery": "^3.3.1",
     "nightwatch": "^0.9.12",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.8.3",
