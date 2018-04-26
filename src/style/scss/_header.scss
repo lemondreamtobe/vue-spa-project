@@ -1,0 +1,25 @@
+.logo{
+    .logo-img{
+        display: inline-block;
+        /* width: 1.2em; */
+        // font-size: 128px;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .logo-img img{
+        vertical-align: middle;
+        padding: 2px;
+        // border: 1px solid #beceeb;
+        width: 60px;
+        margin-left: 13px;
+    }
+    .logo-title{
+        vertical-align: -5px;
+        line-height: 66px;
+        font-size: 24px;
+        color: #ffffff;
+        /* margin-left: 13px; */
+        font-weight: bold;
+    }
+}
+.header{ background: rebeccapurple;}

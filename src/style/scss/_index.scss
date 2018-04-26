@@ -2,104 +2,117 @@
 @import '../base/_reset';
 @import '../base/_animation';
 #app {
-  height: 100%;
-  min-height: 905px;
-  .logo,
-  .copy {
-    text-align: center;
-    color: white;
-  }
-  .article_list {
-    width: 70%;
-    margin: 0px auto;
+	height: 100%;
+	min-height: 905px;
+	.copy {
+		text-align: center;
+		color: white;
+	}
+	.article_list {
+		width: 70%;
+		margin: 0px auto;
+		padding: 5px;
+	}
+	h1 {
+		font-size: 40px;
+		/* margin: 6px 0px; */
+		// padding: 10px 0px;
+		color: white;
+	}
+	.left-menu {
+		display: inline-block;
+		width: 230px;
+		float: left;
+		height: 100%;
+		.el-menu {
+			height: 100%;
+		}
+	}
+	.right-content {
+		margin-left: 230px;
+		height: 100%;
+    background: rgb(246, 246, 246);
     padding: 5px;
+    padding-right: 0px;
+    overflow: hidden;
+	}
+}
+
+// @media screen and (max-width: 982px) {
+//   #app a {
+//     font-size: 14px;
+//   }
+// }
+#index {
+	height: 100%;
+	min-width: 340px;
+	padding: 5px;
+	.index-title {
+		font-size: 16px;
+		background: #0078db;
+		line-height: 41px;
+		color: white;
+		text-indent: 23px;
   }
-  h1 {
-    font-size: 50px;
-    /* margin: 6px 0px; */
-    padding: 10px 0px;
-    color: white;
+  .personal-info .el-row{
+    height:120px;
   }
-  ul {
+  .personal-info{
+    margin-top: 8px;
+  }
+  .personal-info .el-col{
     text-align: center;
   }
-  li {
-    display: inline-block;
-    width: 24%;
-    margin-right: 10px;
-    margin-bottom: 10px;
+  .personal-info .el-col:first-child{
+    text-align: left;
   }
-  a {
-    display: inline-block;
-    width: 100%;
-    padding: 35% 0%;
-    color: white;
-    font-size: 35px;
+  .personal-info .el-col:last-child{
+    text-align: right;
   }
-  #js {
-    background: $js_color;
-    &:hover {
-      background: darken($js_color, 10%);
-    }
+	.butstyle {
+		-moz-border-bottom-colors: none;
+		-moz-border-left-colors: none;
+		-moz-border-right-colors: none;
+		-moz-border-top-colors: none;
+		background-color: #f8f8f8;
+		background-image: -moz-linear-gradient(center top, #ffffff 50%, #f8f8f8 100%);
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f8f8f8));
+		background-image: -webkit-linear-gradient(top, #ffffff, #f8f8f8);
+		background-image: -o-linear-gradient(top, #ffffff, #f8f8f8);
+		background-image: linear-gradient(to bottom, #ffffff 50%, #f8f8f8 100%);
+		border-color: #DEDFE0 #C8C8C8 #C8C8C8;
+		border-image: none;
+		border-right: 1px solid #C8C8C8;
+		border-style: solid;
+		border-width: 1px;
+		box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+		color: #333333;
+		cursor: pointer;
+		display: inline-block;
+		font-family: 'Open Sans', Verdana, sans-serif;
+		font-size: 11px;
+		width: 90%;
+		// padding: 6px 9px 4px;
+    transition: border-color 0.21s ease-out 0s;
+    text-align: center;
   }
-  #html {
-    background: $html_color;
-    &:hover {
-      background: darken($html_color, 10%);
-    }
+  .butstyle:hover{
+    border-color: #4D90FE;
   }
-  #css {
-    background: $css_color;
-    &:hover {
-      background: darken($css_color, 10%);
-    }
+  .butstyle>div{
+    margin: 5px 0px;
+    line-height: 30px;
+    font-size: 15px;
   }
-  #css3 {
-    background: $css3_color;
-    &:hover {
-      background: darken($css3_color, 10%);
-    }
-  }
-  #html5 {
-    background: $html5_color;
-    &:hover {
-      background: darken($html5_color, 10%);
-    }
-  }
-  #jquery {
-    background: $jquery_color;
-    &:hover {
-      background: darken($jquery_color, 10%);
-    }
-  }
-  #bootstrap {
-    background: $bootstrap_color;
-    &:hover {
-      background: darken($bootstrap_color, 10%);
-    }
-  }
-  #avalon {
-    background: $avalon_color;
-    &:hover {
-      background: darken($avalon_color, 10%);
-    }
-  }
-  #vue {
-    background: $vue_color;
-    &:hover {
-      background: darken($vue_color, 10%);
-    }
+  .person-echart{
+    border: 1px solid #e3e3e3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    margin-top: 8px;
   }
 }
 
-@media screen and (max-width: 982px) {
-  #app a {
-    font-size: 14px;
-  }
-}
-
-#index {
-  background: rebeccapurple;
-  height: 100%;
-  min-width: 340px;
-}
