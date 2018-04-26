@@ -6,7 +6,7 @@
         <Menu></Menu>
       </div>
       <div class="right-content">
-        <router-view></router-view>
+          <router-view></router-view>
       </div>
     </div>
     <Footer></Footer>

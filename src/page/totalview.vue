@@ -26,7 +26,7 @@
 		<div class="person-echart">
 			<el-row>
 				<el-col :span="8">
-					<chart :auto-resize="resize" style="width: 100%;height: 315px;position: absolute;top: 10%;" :options="option2" :theme="macarons"></chart>
+					<chart :auto-resize="resize" style="width: 100%;height: 335px;position: absolute;top: 10%;" :options="option2" :theme="macarons"></chart>
 				</el-col>
 				<el-col :span="8">
 				</el-col>
@@ -196,7 +196,7 @@
 						name: '访问来源',
 						type: 'pie',
 						radius: '55%',
-						center: ['50%', '60%'],
+						center: ['50%', '50%'],
 						data: [{
 								value: 335,
 								name: '直接访问'
