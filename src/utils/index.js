@@ -13,6 +13,15 @@ export default {
 		'November',
 		'December',
 	],
+	isNumber(val) {
+		var regPos = /^\d+(\.\d+)?$/; //非负浮点数
+		var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数
+		if (regPos.test(val) || regNeg.test(val)) {
+			return true;
+		} else {
+			return false;
+		}
+	},
 	getRandom(much) {
 		let arr = [];
 		for (let i = 0; i < much; i++) {
@@ -161,9 +170,9 @@ export default {
 					break;
 			}
 		})
-    },
-    addCost(arr, aim) {
-        arr.forEach((value, index) => {
+	},
+	addCost(arr, aim) {
+		arr.forEach((value, index) => {
 			switch (value.way) {
 				case '食物':
 					aim[0].value = aim[0].value + value.count;
@@ -173,7 +182,7 @@ export default {
 					break;
 			}
 		})
-    },
+	},
 	getRingGetData(obj) {
 		let all_get = [{
 				name: '工资',
@@ -201,7 +210,7 @@ export default {
 				if (!obj[current_month][distance]) {
 
 				} else {
-                    this.addGet(obj[current_month][distance], all_get)
+					this.addGet(obj[current_month][distance], all_get)
 				}
 			}
 		} else if (datalen < 30) {
@@ -231,11 +240,11 @@ export default {
 				}
 			}
 		} else {
-            this.addGet(obj[current_month][distance], all_get)
-        }
-        return {
-            all: all_get
-        }
+			this.addGet(obj[current_month][distance], all_get)
+		}
+		return {
+			all: all_get
+		}
 	},
 	getRingCostData(obj) {
 		let all_cost = [{
@@ -246,8 +255,8 @@ export default {
 				name: '交通',
 				value: 0,
 			}
-        ];
-        
+		];
+
 		//根据选择时间
 		let now = new Date();
 		let current_month = this.monthCollect[now.getMonth()];
@@ -260,7 +269,7 @@ export default {
 				if (!obj[current_month][distance]) {
 
 				} else {
-                    this.addCost(obj[current_month][distance], all_cost)
+					this.addCost(obj[current_month][distance], all_cost)
 				}
 			}
 		} else if (datalen < 30) {
@@ -291,11 +300,10 @@ export default {
 			}
 
 		} else {
-            this.addCost(obj[current_month][distance], all_cost)
-        }
-        return {
-            all: all_cost
-        }
-    }
+			this.addCost(obj[current_month][distance], all_cost)
+		}
+		return {
+			all: all_cost
+		}
+	}
 }
-

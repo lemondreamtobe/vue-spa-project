@@ -5,6 +5,7 @@ import Login from '@/page/login'
 import Content from '@/page/content'
 import TotalView from '@/page/totalview'
 import AddGet from '@/page/addget'
+import AddCost from '@/page/addcost'
 
 Vue.use(Router)
 
@@ -14,17 +15,20 @@ export default new Router({
 			component: Login
 		}, {
 			path: '/index',
-      component: Index,
-      children: [
-        {
-          path: '',
-          component: TotalView,
+			component: Index,
+			children: [{
+					path: '',
+					component: TotalView,
 				},
 				{
-          path: 'addget',
-          component: AddGet,
-        }
-      ]
+					path: 'addget',
+					component: AddGet,
+				},
+				{
+					path: 'addcost',
+					component: AddCost,
+				}
+			]
 		},
 		{
 			path: '/content/:id',
@@ -42,4 +46,3 @@ export default new Router({
 		}
 	}
 })
-
