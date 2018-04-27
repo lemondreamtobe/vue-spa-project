@@ -4,6 +4,7 @@
 #app {
 	height: 100%;
 	min-height: 905px;
+	min-width: 1250px;
 	.copy {
 		text-align: center;
 		color: white;
@@ -97,11 +98,12 @@
 	}
 	.butstyle:hover {
 		border-color: #4D90FE;
+		color:#0078d7;
 	}
 	.butstyle>div {
 		margin: 5px 0px;
 		line-height: 30px;
-		font-size: 15px;
+		// font-size: 15px;
 	}
 	.person-echart {
 		border: 1px solid #e3e3e3;

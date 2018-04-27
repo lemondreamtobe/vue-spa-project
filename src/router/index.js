@@ -4,6 +4,7 @@ import Index from '@/page/index'
 import Login from '@/page/login'
 import Content from '@/page/content'
 import TotalView from '@/page/totalview'
+import AddGet from '@/page/addget'
 
 Vue.use(Router)
 
@@ -18,6 +19,10 @@ export default new Router({
         {
           path: '',
           component: TotalView,
+				},
+				{
+          path: 'addget',
+          component: AddGet,
         }
       ]
 		},

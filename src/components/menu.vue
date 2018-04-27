@@ -1,5 +1,5 @@
 <template>
-	<el-menu default-active="1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64"
+	<el-menu :router="rt" default-active="/index" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64"
 	    text-color="#fff" active-text-color="#ffd04b">
 		<!-- <el-submenu index="1">
 			<template slot="title">
@@ -19,26 +19,32 @@
 				<el-menu-item index="1-4-1">选项1</el-menu-item>
 			</el-submenu>
 		</el-submenu> -->
-        <el-menu-item index="1">
+        <el-menu-item index="/index">
 			<i class="el-icon-view"></i>
 			<span slot="title">消费总览</span>
 		</el-menu-item>
-		<el-menu-item index="2">
+		<el-menu-item index="/index/addget">
 			<i class="el-icon-menu"></i>
-			<span slot="title">导航二</span>
+			<span slot="title">新增收入</span>
 		</el-menu-item>
-		<el-menu-item index="3">
+		<el-menu-item index="/index/addcost">
 			<i class="el-icon-document"></i>
-			<span slot="title">导航三</span>
+			<span slot="title">新增支出</span>
 		</el-menu-item>
-		<el-menu-item index="4">
+		<el-menu-item index="/index/checkAll">
 			<i class="el-icon-setting"></i>
-			<span slot="title">导航四</span>
+			<span slot="title">明细查询</span>
 		</el-menu-item>
 	</el-menu>
 </template>
 <script>
 	export default {
+		data() {
+			return {
+				rt: true,
+				url:['', 'addget', 'addcost', 'checkAll']
+			}
+		},
 		methods: {
 			handleOpen(key, keyPath) {
 				console.log(key, keyPath);
