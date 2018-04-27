@@ -92,6 +92,9 @@
         }
       };
     },
+    created(){
+        console.log(1)
+    },
     methods: {
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
