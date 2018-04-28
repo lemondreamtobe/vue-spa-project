@@ -6,6 +6,7 @@ import Content from '@/page/content'
 import TotalView from '@/page/totalview'
 import AddGet from '@/page/addget'
 import AddCost from '@/page/addcost'
+import CheckAll from '@/page/checkall'
 
 Vue.use(Router)
 
@@ -27,6 +28,10 @@ export default new Router({
 				{
 					path: 'addcost',
 					component: AddCost,
+				},
+				{
+					path: 'checkall',
+					component: CheckAll,
 				}
 			]
 		},

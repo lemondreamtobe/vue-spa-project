@@ -2,7 +2,7 @@
   <header class="header">
     <h1 class="logo">
       <a class="logo-img"><img src="../../static/img/logo.png"></a>
-      <span class="logo-title">Vue Test Demo</span>
+      <a class="logo-title" href="/index#/index">Vue Test Demo</a>
     </h1>
   </header>
 </template>

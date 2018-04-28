@@ -32,6 +32,14 @@ cost['April'][26] = [
         description: '地铁上班',
     }
 ]
+cost['April'][27] = [
+    {
+        type:　'cost',
+        count: 4.5,
+        way: '食物',
+        description: '早餐',
+    }
+]
 export {
     cost
 }

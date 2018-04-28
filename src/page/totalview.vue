@@ -26,13 +26,13 @@
 		<div class="person-echart">
 			<el-row>
 				<el-col :span="8">
-					<chart :auto-resize="resize" style="width: 100%;height: 335px;position: absolute;top: 10%;" :options="ringoption_cost" :theme="macarons"></chart>
+					<chart :auto-resize="resize" style="width: 100%;height: 262px;position: absolute;top: 10%;" :options="ringoption_cost" :theme="macarons"></chart>
 				</el-col>
 				<el-col :span="8">
-					<chart :auto-resize="resize" style="width: 100%;height: 335px;position: absolute;top: 10%;" :options="ringoption_get" :theme="roma"></chart>
+					<chart :auto-resize="resize" style="width: 100%;height: 262px;position: absolute;top: 10%;" :options="ringoption_get" :theme="macarons"></chart>
 				</el-col>
 				<el-col :span="8">
-					<chart :auto-resize="resize" style="width: 100%;height: 335px;position: absolute;top: 10%;" :options="ringoption_rate" :theme="macarons"></chart>
+					<chart :auto-resize="resize" style="width: 100%;height: 262px;position: absolute;top: 10%;" :options="ringoption_rate" :theme="macarons"></chart>
 				</el-col>
 			</el-row>
 		</div>
@@ -68,7 +68,7 @@
 				lineoption: {
 					title: {
 						text: "过去30日消费情况",
-						subtext: "纯属虚构"
+						subtext: ""
 					},
 					tooltip: {
 						trigger: "axis"
@@ -139,7 +139,7 @@
 				ringoption_cost: {
 					title: {
 						text: "过去30日消费去向",
-						subtext: "纯属虚构",
+						subtext: "",
 						x: "center"
 					},
 					tooltip: {
@@ -193,7 +193,7 @@
 				ringoption_get: {
 					title: {
 						text: "过去30日收入来源",
-						subtext: "纯属虚构",
+						subtext: "",
 						x: "center"
 					},
 					tooltip: {
@@ -249,9 +249,9 @@
 				ringoption_rate: {
 					legend: {
 						x: 'left',
-						y: 'top',
+						y: 'left',
 						data: [
-							'消费占比', 'other'
+							'消费占比',
 						]
 					},
 					title: {
@@ -280,7 +280,7 @@
 							},
 						},
 						data: [{
-								name: 'other',
+								name: '收入',
 								value: 46,
 								itemStyle: {
 									normal: {

@@ -12,7 +12,7 @@
 					<el-select v-model="ruleForm.get_form" placeholder="请选择收入来源">
 						<el-option label="工资" value="gongzi"></el-option>
 						<el-option label="股票" value="gupiao"></el-option>
-                        <el-option label="兼职" value="jianzhi"></el-option>
+            <el-option label="兼职" value="jianzhi"></el-option>
 					</el-select>
 				</el-form-item>
 				<el-form-item label="收入时间" required>
