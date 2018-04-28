@@ -1,6 +1,6 @@
 <template>
 	<div class="left-bottom">
-		<h3 class="index-title">个人资产</h3>
+		<div class="index-title">个人资产</div>
 		<div class="personal-info">
 			<el-row>
 				<el-col :span="4" v-for="item in items" :key="item.id">
@@ -18,7 +18,7 @@
 				</el-col>
 			</el-row>
 		</div>
-		<h3 class="index-title">收支统计</h3>
+		<div class="index-title">收支统计</div>
 		<div class="person-echart">
 
 			<chart :auto-resize="resize" style="width: 100%;height: 400px;position: absolute;top: 10%;" :options="lineoption" :theme="macarons"></chart>

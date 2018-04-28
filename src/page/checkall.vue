@@ -7,8 +7,9 @@
 				</el-form-item>
 				<el-form-item label="类型" prop="type">
 					<el-select v-model="formInline.type" placeholder="交易类型">
-						<el-option label="收入" value="get"></el-option>
-						<el-option label="支出" value="cost"></el-option>
+						<el-option label="所有类型" value="所有类型"></el-option>
+						<el-option label="收入" value="收入"></el-option>
+						<el-option label="支出" value="支出"></el-option>
 					</el-select>
 				</el-form-item>
 				<!-- <el-form-item label="交易时间" prop="date">
@@ -38,7 +39,9 @@
 			<el-table :data="tableData" stripe style="width: 100%">
 				<el-table-column prop="date" label="日期">
 				</el-table-column>
-				<el-table-column prop="count" label="金额">
+				<el-table-column prop="count" label="金额/¥">
+				</el-table-column>
+				<el-table-column prop="way" label="去向/来源">
 				</el-table-column>
 				<el-table-column prop="type" label="类型">
 				</el-table-column>
@@ -47,12 +50,15 @@
 			</el-table>
 		</div>
 		<div class="check-pagnation">
-			<el-pagination background layout="prev, pager, next" :total="1000">
+			<el-pagination :total="total" :page-size="20" background layout="prev, pager, next">
 			</el-pagination>
 		</div>
 	</div>
 </template>
 <script>
+	import {
+		tabledata
+	} from "../const/table.js"; 
 	export default {
 		data() {
 			var checkAge = (rule, value, callback) => {
@@ -100,50 +106,59 @@
 						message: '请选择开始时间',
 						trigger: 'change'
                     }],
-                    begindate: [{
+                    enddate: [{
 						type: 'date',
 						required: true,
 						message: '请选择结束时间',
 						trigger: 'change'
 					}]
 				},
-				tableData: [{
-					date: '2016-04-02',
-					count: 20,
-					type: '支出',
-					desc: '买早餐'
-				}, {
-					date: '2016-04-02',
-					count: 2,
-					type: '支出',
-					desc: '地铁上班'
-				}, {
-					date: '2016-04-03',
-					count: 35,
-					type: '支出',
-					desc: '中午吃饭'
-				}, {
-					date: '2016-04-21',
-					count: 200,
-					type: '支出',
-					desc: '煤气'
-				}]
+
+				//table
+				tableData: [],
+				total: 0,
 			}
+		},
+		created() {
+			let _this = this;
+			for (let i of tabledata) {
+
+				switch(i.type) {
+					case 'cost':
+						i.type = '开销';
+						break;
+					case 'get':
+						i.type = '收入';
+						break;
+				}
+			}
+			this.tableData = tabledata;
+			this.total = this.tableData.length;
+			// this.tableData = table_data;
+		},
+		mounted(){
+			
 		},
 		methods: {
 			submitForm(formName) {
+				let _this = this;
 				this.$refs[formName].validate(valid => {
+
 					if (valid) {
-						alert("submit!");
+						
+						if (_this.formInline.type == 'all') {
+							return;
+						} else {
+							_this.tableData = _this.tableData.filter((value, index) => {
+								return value.type == _this.formInline.type;
+							});
+						}
 					} else {
 						console.log("error submit!!");
 						return false;
 					}
 				});
 			},
-			resetForm(formName) {
-				this.$refs[formName].resetFields();
-			}
 		}
 	}
 

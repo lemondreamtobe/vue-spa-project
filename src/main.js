@@ -5,7 +5,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import $ from 'jquery'
 import './assets/css/bootstrap.min.css'
-import './assets/js/bootstrap.min'
+// import './assets/js/bootstrap.min'
 // 引用API文件
 import api from './api/index.js'
 // 将API方法绑定到全局

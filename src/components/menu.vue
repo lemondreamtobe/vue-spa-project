@@ -1,5 +1,5 @@
 <template>
-	<el-menu :router="rt" default-active="/index" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64"
+	<el-menu :router="rt" default-active="/index" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#F56C6C"
 	    text-color="#fff" active-text-color="#ffd04b">
 		<!-- <el-submenu index="1">
 			<template slot="title">

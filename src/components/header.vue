@@ -1,8 +1,8 @@
 <template>
   <header class="header">
-    <h1 class="logo">
+    <div class="logo">
       <a class="logo-img"><img src="../../static/img/logo.png"></a>
-      <a class="logo-title" href="/">Vue Test Demo</a>
-    </h1>
+      <a class="logo-title" href="/">开支记录后台管理系统</a>
+    </div>
   </header>
 </template>

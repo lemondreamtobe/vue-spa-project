@@ -109,7 +109,11 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert("submit!");
+           this.$notify({
+            title: '成功',
+            message: '新增成功',
+            type: 'success'
+          });
         } else {
           console.log("error submit!!");
           return false;
