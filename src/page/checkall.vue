@@ -11,9 +11,22 @@
 						<el-option label="支出" value="cost"></el-option>
 					</el-select>
 				</el-form-item>
-				<el-form-item label="交易时间" prop="date">
+				<!-- <el-form-item label="交易时间" prop="date">
 					<el-col :span="24">
 						<el-date-picker type="date" placeholder="选择日期" v-model="formInline.date" style="width: 100%;"></el-date-picker>
+					</el-col>
+				</el-form-item> -->
+				<el-form-item label="交易时间" required>
+					<el-col :span="12">
+						<el-form-item prop="begindate">
+							<el-date-picker type="date" placeholder="开始时间" v-model="formInline.begindate" style="width: 100%;"></el-date-picker>
+						</el-form-item>
+					</el-col>
+					<!-- <el-col class="line" :span="2">-</el-col> -->
+					<el-col :span="12">
+						<el-form-item prop="enddate">
+							<el-date-picker type="date" placeholder="结束时间" v-model="formInline.enddate" style="width: 100%;"></el-date-picker>
+						</el-form-item>
 					</el-col>
 				</el-form-item>
 				<el-form-item>
@@ -33,13 +46,10 @@
 				</el-table-column>
 			</el-table>
 		</div>
-        <div class="check-pagnation">
-            <el-pagination
-                background
-                layout="prev, pager, next"
-                :total="1000">
-            </el-pagination>
-        </div>
+		<div class="check-pagnation">
+			<el-pagination background layout="prev, pager, next" :total="1000">
+			</el-pagination>
+		</div>
 	</div>
 </template>
 <script>
@@ -65,7 +75,8 @@
 				formInline: {
 					count: '',
 					type: '',
-					date: '',
+                    enddate: '',
+                    begindate: '',
 				},
 				rules: {
 					count: [{
@@ -83,10 +94,16 @@
 						message: '请选择交易类型',
 						trigger: 'change'
 					}],
-					date: [{
+					begindate: [{
 						type: 'date',
 						required: true,
-						message: '请选择日期',
+						message: '请选择开始时间',
+						trigger: 'change'
+                    }],
+                    begindate: [{
+						type: 'date',
+						required: true,
+						message: '请选择结束时间',
 						trigger: 'change'
 					}]
 				},
