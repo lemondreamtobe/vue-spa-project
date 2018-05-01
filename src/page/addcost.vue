@@ -10,16 +10,17 @@
 				</el-form-item>
 				<el-form-item label="支出去向" prop="cost_from">
 					<el-select v-model="ruleForm.cost_from" placeholder="请选择支出去向">
-						<el-option label="食物" value="food"></el-option>
-						<el-option label="交通出行" value="traffic"></el-option>
-                        <el-option label="其他" value="other"></el-option>
+						<el-option label="食物" value="食物"></el-option>
+						<el-option label="交通出行" value="交通出行"></el-option>
+						<el-option label="话费" value="话费"></el-option>
+						<el-option label="其他" value="其他"></el-option>
 					</el-select>
 				</el-form-item>
 				<el-form-item label="支出时间" required>
 					<!-- <el-col :span="24"> -->
-						<el-form-item prop="cost_time">
-							<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.cost_time" style="width: 100%;"></el-date-picker>
-						</el-form-item>
+					<el-form-item prop="cost_time">
+						<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.cost_time" style="width: 100%;"></el-date-picker>
+					</el-form-item>
 					<!-- </el-col> -->
 				</el-form-item>
 				<el-form-item label="是否存档" prop="cost_delivery">
@@ -29,13 +30,13 @@
 					<el-radio-group v-model="ruleForm.cost_type">
 						<el-radio label="现金"></el-radio>
 						<el-radio label="银行卡"></el-radio>
-                        <el-radio label="支付宝"></el-radio>
+						<el-radio label="支付宝"></el-radio>
 						<el-radio label="微信钱包"></el-radio>
-                        <el-radio label="羊城通"></el-radio>
+						<el-radio label="羊城通"></el-radio>
 					</el-radio-group>
 				</el-form-item>
 				<el-form-item label="支出描述" prop="cost_desc">
-					<el-input  type="textarea" v-model="ruleForm.cost_desc"></el-input>
+					<el-input type="textarea" v-model="ruleForm.cost_desc"></el-input>
 				</el-form-item>
 				<el-form-item>
 					<el-button type="primary" @click="submitForm('ruleForm')">立即新增</el-button>
@@ -46,11 +47,14 @@
 	</div>
 </template>
 <script>
+import { tabledata } from "../const/table.js";
+import { myMoney } from "../const/myMoney.js";
+import { cost } from "../const/costs";
 export default {
   data() {
     var checkAge = (rule, value, callback) => {
       if (!value) {
-        return callback(new Error("收入金额不能为空"));
+        return callback(new Error("支出金额不能为空"));
       }
       setTimeout(() => {
         if (!this.$utils.isNumber(value)) {
@@ -65,6 +69,8 @@ export default {
       }, 1000);
     };
     return {
+      myMoney: [],
+      tabledata: [],
       ruleForm: {
         cost_count: "",
         cost_from: "",
@@ -75,46 +81,84 @@ export default {
       },
       rules: {
         cost_count: [
-          { required: true, message: "请输入收入金额", trigger: "blur" },
-          { validator: checkAge, trigger: "blur" }
+          {
+            required: true,
+            message: "请输入支出金额",
+            trigger: "blur"
+          },
+          {
+            validator: checkAge,
+            trigger: "blur"
+          }
         ],
         cost_from: [
-          { required: true, message: "请选择收入来源", trigger: "change" }
+          {
+            required: true,
+            message: "请选择支出去向",
+            trigger: "change"
+          }
         ],
         cost_time: [
           {
             type: "date",
             required: true,
-            message: "请选择收入日期",
+            message: "请选择支出日期",
             trigger: "change"
           }
         ],
         cost_type: [
           {
             required: true,
-            message: "请至少选择一个收入形式",
+            message: "请至少选择一个支出形式",
             trigger: "change"
           }
         ],
         cost_desc: [
-          { required: true, message: "请简要描述此次收入", trigger: "blur" }
+          {
+            required: true,
+            message: "请简要描述此次支出",
+            trigger: "blur"
+          }
         ]
       }
     };
   },
   created() {
+    let _this = this;
+    _this.myMoney = myMoney;
+    _this.tabledata = tabledata;
     let type = this.$router.currentRoute.fullPath.split("/");
     let url = type[type.length - 1];
   },
   methods: {
     submitForm(formName) {
+      let _this = this;
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.$notify({
-            title: '成功',
-            message: '新增成功',
-            type: 'success'
+            title: "成功",
+            message: "新增成功",
+            type: "success"
           });
+
+          //更新表格数据
+          _this.tabledata.push({
+            date: this.ruleForm.cost_time.toLocaleDateString(),
+            type: "cost",
+            way: this.ruleForm.cost_from,
+            desc: this.ruleForm.cost_desc,
+            count: this.ruleForm.cost_count
+          });
+
+          //更新现有资产
+          _this.$utils.updateTotalView(
+            _this.ruleForm,
+            _this.myMoney,
+            _this.tabledata,
+            "cost"
+          );
+
+          _this.resetForm("ruleForm");
         } else {
           console.log("error submit!!");
           return false;

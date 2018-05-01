@@ -10,9 +10,9 @@
 				</el-form-item>
 				<el-form-item label="收入来源" prop="get_form">
 					<el-select v-model="ruleForm.get_form" placeholder="请选择收入来源">
-						<el-option label="工资" value="gongzi"></el-option>
-						<el-option label="股票" value="gupiao"></el-option>
-            <el-option label="兼职" value="jianzhi"></el-option>
+						<el-option label="工资" value="工资"></el-option>
+						<el-option label="股票" value="股票"></el-option>
+            <el-option label="兼职" value="兼职"></el-option>
 					</el-select>
 				</el-form-item>
 				<el-form-item label="收入时间" required>
@@ -45,6 +45,7 @@
 	</div>
 </template>
 <script>
+import { tabledata } from "../const/table.js";
 export default {
   data() {
     var checkAge = (rule, value, callback) => {
@@ -52,7 +53,7 @@ export default {
         return callback(new Error("收入金额不能为空"));
       }
       setTimeout(() => {
-        if (!this.$utils.isNumber(value)) {
+        if (!_this.$utils.isNumber(value)) {
           callback(new Error("请输入数字值"));
         } else {
           if (value < 0) {
@@ -102,18 +103,37 @@ export default {
     };
   },
   created() {
-    let type = this.$router.currentRoute.fullPath.split("/");
+    let _this = this;
+    let type = _this.$router.currentRoute.fullPath.split("/");
     let url = type[type.length - 1];
   },
   methods: {
     submitForm(formName) {
-      this.$refs[formName].validate(valid => {
+      let _this = this;
+      _this.$refs[formName].validate(valid => {
         if (valid) {
-           this.$notify({
-            title: '成功',
-            message: '新增成功',
-            type: 'success'
+          _this.$notify({
+            title: "成功",
+            message: "新增成功",
+            type: "success"
           });
+          tabledata.push({
+            date: _this.ruleForm.cost_time.toLocaleDateString(),
+            type: "cost",
+            way: _this.ruleForm.cost_from,
+            desc: _this.ruleForm.cost_desc,
+            count: _this.ruleForm.cost_count
+          });
+
+          //更新现有资产
+          _this.$utils.updateTotalView(
+            _this.ruleForm,
+            _this.myMoney,
+            _this.tabledata,
+            "get"
+          );
+
+          _this.resetForm("ruleForm");
         } else {
           console.log("error submit!!");
           return false;
@@ -121,7 +141,7 @@ export default {
       });
     },
     resetForm(formName) {
-      this.$refs[formName].resetFields();
+      _this.$refs[formName].resetFields();
     }
   }
 };

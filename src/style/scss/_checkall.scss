@@ -1,24 +1,36 @@
-.checkall{
-    height: 100%;
-    .check-form,.check-table{
-        border:1px solid #e4e4e4; 
-    }
-    .el-form--inline{
-        padding-top: 22px;
-    }
-    .check-table{
-        margin-top: 8px;
-        height: 84%;
-    }
-    .el-pagination{
-        text-align: center;
-    }
-    .el-table th{
-        background: #409EFF;
-        color: white;
-        text-align: center;
-    }
-    .el-table td{
-        text-align: center;
-    }
+.checkall {
+	height: 100%;
+	position: relative;
+	.check-form,
+	.check-table {
+		border: 1px solid #e4e4e4;
+	}
+	.el-form--inline {
+		padding-top: 22px;
+	}
+	.check-table {
+		margin-top: 8px;
+		height: 84%;
+	}
+	.el-pagination {
+		text-align: center;
+	}
+	.el-table th {
+		background: #409EFF;
+		color: white;
+		text-align: center;
+	}
+	.el-table td {
+		text-align: center;
+	}
+	.el-form--inline>.el-form-item {
+		width: 20%;
+	}
+	.el-form--inline>.el-form-item>.el-form-item__content {
+		width: 60%;
+	}
+	.el-button {
+		position: absolute;
+		right: 85px;
+	}
 }

@@ -1,17 +1,20 @@
-.personal-info{
-    .info-count{
-        // color: #434D55;
-        display: block;
-        font-size: 18px;
-        font-weight: 400;
-        text-align: center;
-        line-height: 26px;
-    }
-    .info-li{
-        font-size: 15px;
-    }
-    .info-icon{
-        font-size: 20px;
-    }
-    
+.personal-info {
+	.info-count {
+		// color: #434D55;
+		display: block;
+		font-size: 18px;
+		font-weight: 400;
+		text-align: center;
+		line-height: 26px;
+	}
+	.info-li {
+		font-size: 15px;
+	}
+	.info-icon {
+		font-size: 20px;
+	}
+}
+
+.left-bottom .person-echart:last-child {
+	height: 265px;
 }

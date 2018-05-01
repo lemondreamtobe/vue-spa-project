@@ -22,6 +22,38 @@ export default {
 			return false;
 		}
 	},
+	updateTotalView(obj, money, tabledata, type) {
+		//更新现有资产
+		switch (obj.cost_type) {
+			case "现金":
+				money[1].count = type == 'cost' ? (money[1].count - obj.cost_count) : (money[1].count + obj.cost_count);
+				break;
+			case "羊城通":
+				money[2].count = type == 'cost' ? (money[2].count - obj.cost_count) : (money[2].count + obj.cost_count);
+				break;
+			default:
+				money[0].count = type == 'cost' ? (money[0].count - obj.cost_count) : (money[0].count + obj.cost_count);
+		}
+		money[3].count = type == 'cost' ? (money[3].count - obj.cost_count) : (money[3].count + obj.cost_count);
+		let cost_data = tabledata.filter(
+			(value, index) => value.type == "cost"
+		);
+		let cost_total = 0;
+		for (let i of [...cost_data]) {
+			cost_total += i.count;
+		}
+		let get_data = tabledata.filter(
+			(value, index) => value.type == "get"
+		);
+		let get_total = 0;
+		for (let i of [...get_data]) {
+			get_total += i.count;
+		}
+		money[money.length - 1].count =
+			get_total - cost_total;
+		money[money.length - 2].count =
+			Math.trunc(get_total / (cost_total + get_total)) + "%";
+	},
 	getRandom(much) {
 		let arr = [];
 		for (let i = 0; i < much; i++) {
@@ -128,25 +160,27 @@ export default {
 			let prev_month = this.monthCollect[prev.getMonth()];
 			prev = new Date(prev.setMonth(prev.getMonth() + 1));
 			prev.setDate(0);
-			let prev_day = prev.getDate();
-			for (let i = 0; i < distances; i++) {
+			let prev_day = prev.getDate() - 1;
+			for (let j = 0; j < distances; j++) {
 
-				if (!obj[prev_month][prev_day - i]) {
-					prev_cost_count.push(0);
-					prev_cost_day.push((prev.getMonth() + 1) + '.' + (prev_day - i));
+				if (!obj[prev_month][prev_day - j]) {
+					prev_cost_count[prev_day - j] = 0;
+					prev_cost_day[prev_day - j] = ((prev.getMonth() + 1) + '.' + (prev_day - j + 1));
 				} else {
 					let total = 0;
-					value.forEach(function (val, ind) {
+					obj[prev_month][prev_day - j].forEach(function (val, ind) {
 						total += val.count;
 					});
-					prev_cost_count[prev_day - i] = total;
-					prev_cost_day.push((prev.getMonth() + 1) + '.' + (prev_day - i));
+					prev_cost_count[prev_day - j] = total;
+					prev_cost_day[prev_day - j] = ((prev.getMonth() + 1) + '.' + (prev_day - j + 1));
 				}
 			};
+			prev_cost_count.splice(0, cost_count.length);
+			prev_cost_day.splice(0, cost_count.length);
 			return {
-				count: [...(prev_cost_count.reverse()), ...cost_count],
+				count: [...prev_cost_count, ...cost_count],
 				　
-				day: [...(prev_cost_day.reverse()), ...cost_day]　
+				day: [...prev_cost_day, ...cost_day]　
 			}
 		} else {
 			return {
@@ -176,10 +210,21 @@ export default {
 			switch (value.way) {
 				case '食物':
 					aim[0].value = aim[0].value + value.count;
+					console.log(value.count);
 					break;
 				case '交通':
 					aim[1].value = aim[1].value + value.count;
+					console.log(value.count);
 					break;
+				case '话费':
+					aim[2].value += value.count;
+					console.log(value.count);
+					break;
+				case '流量':
+					aim[3].value += value.count;
+					console.log(value.count);
+				case '网费':
+					aim[4].value += value.count;
 			}
 		})
 	},
@@ -240,7 +285,12 @@ export default {
 				}
 			}
 		} else {
-			this.addGet(obj[current_month][distance], all_get)
+			for (let i of obj[current_month]) {
+
+				if (i) {
+					this.addGet(i, all_get);
+				}
+			}
 		}
 		return {
 			all: all_get
@@ -253,6 +303,22 @@ export default {
 			},
 			{
 				name: '交通',
+				value: 0,
+			},
+			{
+				name: '话费',
+				value: 0,
+			},
+			{
+				name: '流量',
+				value: 0,
+			},
+			{
+				name: '网费',
+				value: 0,
+			},
+			{
+				name: '其他',
 				value: 0,
 			}
 		];
@@ -300,7 +366,12 @@ export default {
 			}
 
 		} else {
-			this.addCost(obj[current_month][distance], all_cost)
+			for (let i of obj[current_month]) {
+
+				if (i) {
+					this.addCost(i, all_cost);
+				}
+			};
 		}
 		return {
 			all: all_cost
