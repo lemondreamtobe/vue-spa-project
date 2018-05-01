@@ -42,7 +42,7 @@
 			</el-table>
 		</div>
 		<div class="check-pagnation">
-			<el-pagination :total="pagination.total" :page-size="20" background layout="prev, pager, next">
+			<el-pagination @current-change="handleCurrentChange" :current-page.sync="pagination.current" :total="pagination.total" :page-size="pagination.pageSize" background layout="prev, pager, next">
 			</el-pagination>
 		</div>
 	</div>
@@ -115,14 +115,15 @@ export default {
       //table
       tableData: [],
       pagination: {
-        pageSize: 15,
-        total: 0
+        pageSize: 9,
+        total: 0,
+        current: 1
       }
     };
   },
   created() {
     let _this = this;
-    _this.tableData = tabledata;
+    _this.tableData = tabledata.concat().splice(0, 9);
     for (let i of tabledata) {
       switch (i.type) {
         case "cost":
@@ -133,11 +134,15 @@ export default {
           break;
       }
     }
-    _this.pagination.total = _this.tableData.length;
+    _this.pagination.total = tabledata.length;
     // this.tableData = table_data;
   },
   mounted() {},
   methods: {
+    handleCurrentChange(a, b) {
+      this.tableData = tabledata.concat().splice((a - 1) * 9, 9);
+      $(".check-form")[0].scrollIntoView();
+    },
     submitForm(formName) {
       let _this = this;
       this.$refs[formName].validate(valid => {
