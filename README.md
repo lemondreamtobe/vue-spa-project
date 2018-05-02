@@ -6,7 +6,7 @@
 > vue.js + vue-router + webpack + vue-element
 
 ## 项目预览地址
-> [This link](http://www.my-web-project.cn)
+> [点击这里预览项目](http://www.my-web-project.cn)
 
 ## Build Setup
 
