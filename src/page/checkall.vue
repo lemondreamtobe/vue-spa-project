@@ -37,6 +37,8 @@
 				</el-table-column>
 				<el-table-column prop="type" label="类型">
 				</el-table-column>
+        <el-table-column prop="from" label="收支目标">
+				</el-table-column>
 				<el-table-column prop="desc" label="描述">
 				</el-table-column>
 			</el-table>

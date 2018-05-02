@@ -4,6 +4,7 @@ let tabledata = [{
 		count: 5000,
 		way: '工资',
 		desc: '发薪水了',
+		from: '银行卡',
 	},
 	{
 		date: '2018/4/21',
@@ -11,6 +12,7 @@ let tabledata = [{
 		count: 20,
 		way: '兼职',
 		desc: '派发传单3小时所得',
+		from: '银行卡',
 	},
 	{
 		date: '2018/4/25',
@@ -18,6 +20,7 @@ let tabledata = [{
 		count: 　200,
 		way: 　 '股票',
 		desc: '涨停卖出',
+		from: '银行卡',
 	},
 	{
 		date: '2018/4/26',
@@ -25,6 +28,7 @@ let tabledata = [{
 		count: 　4.5,
 		way: 　 '食物',
 		desc: '买早餐',
+		from: '银行卡',
 	},
 	{
 		date: '2018/4/26',
@@ -32,6 +36,7 @@ let tabledata = [{
 		count: 13.1,
 		way: '食物',
 		desc: '买水果',
+		from: '银行卡',
 	},
 	{
 		date: '2018/4/26',
@@ -39,6 +44,7 @@ let tabledata = [{
 		count: 1.2,
 		way: '交通',
 		desc: '地铁上班',
+		from: '羊城通',
 	},
 	{
 		date: '2018/4/28',
@@ -46,6 +52,7 @@ let tabledata = [{
 		count: 1.2,
 		way: '交通',
 		desc: '地铁上班',
+		from: '羊城通',
 	},
 	{
 		date: '2018/4/28',
@@ -53,6 +60,7 @@ let tabledata = [{
 		count: 4.5,
 		way: '食物',
 		desc: '早餐',
+		from: '银行卡',
 	},
 	{
 		date: '2018/4/29',
@@ -60,67 +68,93 @@ let tabledata = [{
 		count: 52,
 		way: '交通',
 		desc: '51节坐大巴',
+		from: '银行卡',
 	},
 	{
 		date: '2018/4/29',
 		type: 'cost',
 		count: 30,
 		way: '话费',
-		desc: '手机充值话费'
+		desc: '手机充值话费',
+		from: '银行卡',
 	}, {
 		date: '2018/4/30',
 		type: 'cost',
 		count: 5,
 		way: '流量',
-		desc: '手机充值流量'
+		desc: '手机充值流量',
+		from: '银行卡',
 	}, {
 		date: '2018/4/30',
 		type: 'cost',
 		count: 108,
 		way: '食物',
-		desc: '买米'
+		desc: '买米',
+		from: '银行卡',
 	},
 	{
 		date: '2018/5/1',
 		type: 'cost',
 		count: 50,
 		way: '话费',
-		desc: '月结充值'
+		desc: '月结充值',
+		from: '银行卡',
 	},
 	{
 		date: '2018/5/1',
 		type: 'cost',
 		count: 70,
 		way: '交通',
-		desc: '51返程大巴'
+		desc: '51返程大巴',
+		from: '银行卡',
 	},
 	{
 		date: '2018/5/1',
 		type: 'cost',
 		count: 24,
 		way: '房租',
-		desc: '每月网费'
+		desc: '每月网费',
+		from: '银行卡',
 	},
 	{
 		date: '2018/5/2',
 		type: 'cost',
 		count: 4.5,
 		way:　'食物',
-		desc: '买早餐'
+		desc: '买早餐',
+		from: '银行卡',
 	},
 	{
 		date: '2018/5/2',
 		type: 'cost',
 		count: 39,
 		way: '其他',
-		desc: '大扫除工具购买'
+		desc: '大扫除工具购买',
+		from: '银行卡',
 	},
 	{
 		date: '2018/5/2',
 		type: 'cost',
 		count:50,
 		way: '交通',
-		desc: '羊城通充值'
+		desc: '羊城通充值',
+		from: '银行卡',
+	},
+	{
+		date: '2018/5/2',
+		type: 'cost',
+		count:4,
+		way: '交通',
+		desc: '地铁上班',
+		from: '羊城通',
+	},
+	{
+		date: '2018/5/2',
+		type: 'cost',
+		count:4.5,
+		way: '食物',
+		desc: '买早餐',
+		from: '银行卡',
 	}
 ]
 export {

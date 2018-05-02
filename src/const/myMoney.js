@@ -1,6 +1,6 @@
 let myMoney = [{
 		type: '银行卡',
-		count: 26000,
+		count: 0,
 		icon: 'glyphicon glyphicon-credit-card'
 	},
 	{
@@ -10,7 +10,7 @@ let myMoney = [{
 	},
 	{
 		type: '羊城通',
-		count: 20,
+		count: 50,
 		icon: 'glyphicon glyphicon-tower'
 	},
 	{
@@ -29,6 +29,16 @@ myMoney.splice(3, 0, {
 	count: (+myMoney[0].count) + (+myMoney[1].count) + (+myMoney[2].count),
 	icon: 'glyphicon  glyphicon-signal'
 });
+let mmLink = {
+	'银行卡': myMoney[0],
+	'现金': myMoney[1],
+	'羊城通': myMoney[2],
+	'总资产': myMoney[3],
+	'支出占比': myMoney[4],
+	'开支总差': myMoney[5],
+	init: true,
+}
 export {
-	myMoney
+	myMoney,
+	mmLink,
 }

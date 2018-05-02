@@ -46,7 +46,7 @@ import "echarts/lib/component/tooltip";
 require("echarts/theme/macarons");
 require("echarts/theme/shine");
 Vue.component("chart", ECharts);
-import { myMoney } from "../const/myMoney.js";
+import { myMoney, mmLink } from "../const/myMoney.js";
 import { cost } from "../const/costs.js";
 import { gets } from "../const/get.js";
 import { tabledata } from "../const/table.js";
@@ -54,8 +54,10 @@ export default {
   data() {
     return {
       tabledata: [],
+
       //个人资产信息
       items: [],
+      mmLink: {},
 
       //表格配置项
       resize: true,
@@ -337,43 +339,93 @@ export default {
     };
   },
   created() {
+
+    //取得数据的引用，方便调用
     let _this = this;
     this.items = myMoney;
     this.tabledata = tabledata;
+    this.mmLink = mmLink;
 
-    //折线图数据
+    //过去30日消费折线图数据
     let line_data = this.$utils.getLineData(cost);
     ({
       count: this.lineoption.series[0].data,
       day: this.lineoption.xAxis[0].data
     } = line_data);
 
-    //消费圆环数据
+    //过去30日消费圆环数据
     let ring_data_cost = this.$utils.getRingCostData(cost);
     ({ all: this.ringoption_cost.series[0].data } = ring_data_cost);
 
-    //收入圆环数据
+    //过去30日收入圆环数据
     let ring_data_get = this.$utils.getRingGetData(gets);
     ({ all: this.ringoption_get.series[0].data } = ring_data_get);
 
-    //收益比率以及收支总差数据
+    //过去30日收益比率以及收支总差数据
     let cost_data = _this.tabledata.filter(
       (value, index) => value.type == "cost" || value.type == "支出"
     );
-    let cost_total = 0;
+    let cost_total = 0,
+        card_cost = 0,
+        cash_cost = 0,
+        yct_cost = 0;
     for (let i of [...cost_data]) {
       cost_total += i.count;
+      switch(i.from) {
+        case '银行卡':
+          card_cost += i.count;
+          break;
+
+        case '现金':
+          cash_cost += i.count;
+          break;
+        
+        case '羊城通':
+          yct_cost += i.count;
+          break;
+      }
     }
     _this.lineoption.title.subtext = "共消费支出" + cost_total;
     let get_data = _this.tabledata.filter(
       (value, index) => value.type == "get" || value.type == "收入"
     );
-    let get_total = 0;
+    let get_total = 0,
+        card_get = 0,
+        cash_get = 0,
+        yct_get = 0;
     for (let i of [...get_data]) {
       get_total += i.count;
+      switch(i.from) {
+        case '银行卡':
+          card_get += i.count;
+          break;
+
+        case '现金':
+          cash_get += i.count;
+          break;
+        
+        case '羊城通':
+          yct_get += i.count;
+          break;
+      }
     }
-    this.items[this.items.length - 1].count = get_total - cost_total;
-    this.items[4].count = Math.trunc(cost_total / get_total * 100) + "%";
+    
+    if (this.mmLink.init) {
+        this.mmLink['开支总差'].count = get_total - cost_total;
+        this.mmLink['支出占比'].count = Math.trunc(cost_total / get_total * 100) + "%";
+        this.mmLink['银行卡'].count -= card_cost;
+        this.mmLink['现金'].count -= cash_cost;
+        this.mmLink['羊城通'].count -= yct_cost;
+        this.mmLink['银行卡'].count += card_get;
+        this.mmLink['现金'].count += cash_get;
+        this.mmLink['羊城通'].count += yct_get;
+
+        this.mmLink['银行卡'].count = Math.trunc(this.mmLink['银行卡'].count);
+        this.mmLink['现金'].count = Math.trunc(this.mmLink['现金'].count);
+        this.mmLink['羊城通'].count = Math.trunc(this.mmLink['羊城通'].count);
+        this.mmLink['总资产'].count = Math.trunc(this.mmLink['现金'].count + this.mmLink['银行卡'].count + this.mmLink['羊城通'].count);
+        this.mmLink.init = false;
+    }
   },
   methods: {}
 };
