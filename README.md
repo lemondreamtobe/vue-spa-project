@@ -2,6 +2,9 @@
 
 > A SPA of Vue.js project
 
+## 技术栈
+> vue.js + vue-router + webpack + vue-element
+
 ## Build Setup
 
 ``` bash
