@@ -225,6 +225,9 @@ export default {
 					console.log(value.count);
 				case '网费':
 					aim[4].value += value.count;
+					break;
+				case'其他':
+					aim[5].value += value.count;
 			}
 		})
 	},

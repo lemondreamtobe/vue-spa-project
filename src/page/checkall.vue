@@ -115,7 +115,7 @@ export default {
       //table
       tableData: [],
       pagination: {
-        pageSize: 9,
+        pageSize: 10,
         total: 0,
         current: 1
       }
@@ -123,7 +123,7 @@ export default {
   },
   created() {
     let _this = this;
-    _this.tableData = tabledata.concat().splice(0, 9);
+    _this.tableData = tabledata.concat().splice(0, 10);
     for (let i of tabledata) {
       switch (i.type) {
         case "cost":
@@ -140,7 +140,7 @@ export default {
   mounted() {},
   methods: {
     handleCurrentChange(a, b) {
-      this.tableData = tabledata.concat().splice((a - 1) * 9, 9);
+      this.tableData = tabledata.concat().splice((a - 1) * 10, 10);
       $(".check-form")[0].scrollIntoView();
     },
     submitForm(formName) {

@@ -100,6 +100,27 @@ let tabledata = [{
 		count: 24,
 		way: '房租',
 		desc: '每月网费'
+	},
+	{
+		date: '2018/5/2',
+		type: 'cost',
+		count: 4.5,
+		way:　'食物',
+		desc: '买早餐'
+	},
+	{
+		date: '2018/5/2',
+		type: 'cost',
+		count: 39,
+		way: '其他',
+		desc: '大扫除工具购买'
+	},
+	{
+		date: '2018/5/2',
+		type: 'cost',
+		count:50,
+		way: '交通',
+		desc: '羊城通充值'
 	}
 ]
 export {

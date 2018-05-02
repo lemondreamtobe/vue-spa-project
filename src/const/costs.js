@@ -19,6 +19,26 @@ let cost = {
 				way: '网费',
 				description: '每月网费'
 			}
+		],
+		[
+			{
+				type: 'cost',
+				count: 4.5,
+				way:　'食物',
+				description: '买早餐'
+			},
+			{
+				type: 'cost',
+				count: 39,
+				way: '其他',
+				description: '大扫除工具购买'
+			},
+			{
+				type: 'cost',
+				count:50,
+				way: '交通',
+				description: '羊城通充值'
+			}
 		]
 	]
 };

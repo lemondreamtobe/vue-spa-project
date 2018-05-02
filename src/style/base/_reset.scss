@@ -155,11 +155,11 @@ html {
   padding: 5px;
 }
 a{
-  text-decoration: none;
+  text-decoration: none !important;
 }
 a:active{
   text-decoration: none !important;
 }
 a:hover{
-  text-decoration: none;
+  text-decoration: none !important;
 }
