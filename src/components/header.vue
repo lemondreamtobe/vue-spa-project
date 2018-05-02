@@ -88,9 +88,13 @@ export default {
   },
   methods: {
     handleCommand(command) {
-      
+      let  _this = this;
       if (command == 'exit') {
-        this.$router.push({ path: '/' });
+        this.$confirm('确认退出系统？')
+          .then(_ => {
+             _this.$router.push({ path: '/' });
+          })
+          .catch(_ => {});
       } else {
         this.dialogVisible = true;
       }
