@@ -5,6 +5,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import $ from 'jquery'
 import './assets/css/bootstrap.min.css'
+import Vuex from 'vuex'
 // import './assets/js/bootstrap.min'
 // 引用API文件
 import api from './api/index.js'
@@ -18,6 +19,7 @@ Vue.config.productionTip = false
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 Vue.use(ElementUI);
+Vue.use(Vuex)
 
 /* eslint-disable no-new */
 new Vue({

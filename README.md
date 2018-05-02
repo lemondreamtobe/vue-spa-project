@@ -8,9 +8,13 @@
 ## 项目预览地址
 > [点击这里预览项目 账号密码:admin](http://www.my-web-project.cn)
 
-## Build Setup
+## 项目运行方式
 
 ``` bash
+#firstly, you should fork this repository
+click the button of 'fork' or 'Clone or download'
+make sure local has all that files
+
 # install dependencies
 npm install
 
