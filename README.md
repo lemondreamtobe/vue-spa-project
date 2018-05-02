@@ -5,6 +5,9 @@
 ## 技术栈
 > vue.js + vue-router + webpack + vue-element
 
+## 项目预览地址
+> [This link](http://www.my-web-project.cn)
+
 ## Build Setup
 
 ``` bash
