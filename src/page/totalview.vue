@@ -281,7 +281,7 @@ export default {
               normal: {
                 label: {
                   formatter: function(params) {
-                    return 100 - params.value + "%";
+                    return params.value;
                   },
                   textStyle: {
                     baseline: "top"
@@ -292,7 +292,7 @@ export default {
             data: [
               {
                 name: "收入",
-                value: 46,
+                value: 0,
                 itemStyle: {
                   normal: {
                     color: "#D43239",
@@ -315,7 +315,7 @@ export default {
               },
               {
                 name: "消费占比",
-                value: 54,
+                value: 0,
                 itemStyle: {
                   normal: {
                     label: {
@@ -409,7 +409,8 @@ export default {
           break;
       }
     }
-    
+    this.ringoption_rate.series[0].data[0].value = get_total;
+    this.ringoption_rate.series[0].data[1].value = cost_total;
     if (this.mmLink.init) {
         this.mmLink['开支总差'].count = get_total - cost_total;
         this.mmLink['支出占比'].count = Math.trunc(cost_total / get_total * 100) + "%";
