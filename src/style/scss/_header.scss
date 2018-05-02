@@ -9,7 +9,7 @@
 	.logo-img img {
 		vertical-align: middle;
 		padding: 2px; // border: 1px solid #beceeb;
-		width: 60px;
+		width: 43px;
 		margin-left: 13px;
 	}
 	.logo-title {
@@ -29,6 +29,21 @@
 		/* word-spacing: 3px; */
 		/* letter-spacing: 2px; */
 		cursor: pointer;
+	}
+	.el-dialog__header{
+		background: #409EFF;
+		.el-dialog__title{
+			color: white;
+		}
+	}
+	.el-dialog__footer{
+		text-align: center;
+	}
+	.el-form-item{
+		margin-bottom: 45px;
+	}
+	.el-form-item:last-child{
+		margin: 0px;
 	}
 }
 

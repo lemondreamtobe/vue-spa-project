@@ -13,6 +13,7 @@
 	}
 	.el-pagination {
 		text-align: center;
+		height: 100%;
 	}
 	.el-table th {
 		background: #409EFF;
@@ -35,5 +36,9 @@
 	.check-pagnation{
 		height: 50px;
 		margin-top: 15px;
+		position: absolute;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
 	}
 }

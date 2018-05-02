@@ -1,5 +1,5 @@
 
-export const USER = {
+export let USER = {
     USERNAME: 'admin',
     PASSWORD: 'admin'
 }
