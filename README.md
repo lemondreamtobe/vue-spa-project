@@ -1,6 +1,6 @@
-# vue-test
+# 开支记录后台管理系统
 
-> A Vue.js project
+> A SPA of Vue.js project
 
 ## Build Setup
 
