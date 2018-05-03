@@ -157,6 +157,14 @@ let tabledata = [{
 		from: '银行卡',
 	},
 	{
+		date: '2018/5/2',
+		type: 'cost',
+		count:24,
+		way: '其他',
+		desc: '购买杀虫剂以及牙刷',
+		from: '银行卡',
+	},
+	{
 		date: '2018/5/3',
 		type: 'cost',
 		count: 4,

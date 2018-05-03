@@ -30,8 +30,6 @@
 					<el-radio-group v-model="ruleForm.cost_type">
 						<el-radio label="现金"></el-radio>
 						<el-radio label="银行卡"></el-radio>
-						<el-radio label="支付宝"></el-radio>
-						<el-radio label="微信钱包"></el-radio>
 						<el-radio label="羊城通"></el-radio>
 					</el-radio-group>
 				</el-form-item>
@@ -48,7 +46,7 @@
 </template>
 <script>
 import { tabledata } from "../const/table.js";
-import { myMoney } from "../const/myMoney.js";
+import {mmLink } from "../const/myMoney.js";
 import { cost } from "../const/costs";
 export default {
   data() {
@@ -69,7 +67,7 @@ export default {
       }, 1000);
     };
     return {
-      myMoney: [],
+      mmLink: {},
       tabledata: [],
       ruleForm: {
         cost_count: "",
@@ -125,10 +123,8 @@ export default {
   },
   created() {
     let _this = this;
-    _this.myMoney = myMoney;
+    _this.mmLink = mmLink;
     _this.tabledata = tabledata;
-    let type = this.$router.currentRoute.fullPath.split("/");
-    let url = type[type.length - 1];
   },
   methods: {
     submitForm(formName) {
@@ -147,17 +143,10 @@ export default {
             type: "cost",
             way: this.ruleForm.cost_from,
             desc: this.ruleForm.cost_desc,
-            count: this.ruleForm.cost_count
-          });
-
-          //更新现有资产
-          _this.$utils.updateTotalView(
-            _this.ruleForm,
-            _this.myMoney,
-            _this.tabledata,
-            "cost"
-          );
-
+            count: this.ruleForm.cost_count,
+            from: this.ruleForm.cost_type,
+          });         
+          _this.mmLink.init = true;
           _this.resetForm("ruleForm");
         } else {
           console.log("error submit!!");
