@@ -153,6 +153,9 @@ export default {
           });
           break;
       }
+      _this.tableData_mid = _this.tableData_mid.filter((value, index) => {
+          return _this.formInline.begindate.getTime() <= new Date(value.date).getTime() && new Date(value.date).getTime() <= _this.formInline.enddate.getTime()
+      });
       _this.tableData = _this.tableData_mid.concat().splice(0, 10);
       _this.pagination.current = 1;
       _this.pagination.total = _this.tableData_mid.length;
