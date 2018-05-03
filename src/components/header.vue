@@ -83,8 +83,8 @@ export default {
   created() {
     let _this = this;
     _this.USER = USER;
-    _this.user = USER.USERNAME;
-    _this.form.user = USER.USERNAME;
+    _this.user = USER.USERNAME.key;
+    _this.form.user = USER.USERNAME.key;
   },
   methods: {
     handleCommand(command) {
@@ -112,6 +112,7 @@ export default {
               message: '修改密码成功',
               type: 'success'
             });
+             _this.USER.PASSWORD.key = _this.form.password;
             setTimeout(function() {
               _this.$router.push({ path: '/' });
             }, 500);

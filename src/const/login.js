@@ -1,5 +1,11 @@
-
-export let USER = {
-    USERNAME: 'admin',
-    PASSWORD: 'admin'
+let USER = {
+	USERNAME: {
+		key: 'admin'
+	},
+	PASSWORD: {
+		key: 'admin'
+	}
+}
+export {
+	USER
 }

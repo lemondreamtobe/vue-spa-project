@@ -52,6 +52,22 @@ let cost = {
 				description: '羊城通充值',
 				from: '银行卡',
 			}
+		],
+		[
+			{
+				type: 'cost',
+				count: 4,
+				way:　'交通',
+				description: '地铁上班',
+				from: '羊城通',
+			},
+			{
+				type: 'cost',
+				count: 4.5,
+				way:　'食物',
+				description: '买早餐',
+				from: '银行卡',
+			},
 		]
 	]
 };
