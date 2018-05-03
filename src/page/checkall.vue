@@ -4,6 +4,7 @@
 			<el-form status-icon :inline="true" :model="formInline" ref="formInline" :rules="rules" class="demo-form-inline">
 				<el-form-item label="目标" prop="from">
 					<el-select v-model="formInline.from" placeholder="收支目标">
+            <el-option label="所有类型" value="所有类型"></el-option>
 						<el-option label="银行卡" value="银行卡"></el-option>
 						<el-option label="现金" value="现金"></el-option>
 						<el-option label="羊城通" value="羊城通"></el-option>
@@ -131,7 +132,7 @@ export default {
       this.tableData = this.tableData_mid.concat().splice((a - 1) * this.pagination.pageSize, this.pagination.pageSize);
       $(".check-form")[0].scrollIntoView();
     },
-    freshTableData(mark) {
+    freshTableData(mark, aim) {
       let _this = this;
       switch(mark) {
         case '所有类型':
@@ -142,6 +143,16 @@ export default {
             return value.type == _this.formInline.type;
           });
       }
+      switch(aim) {
+        case '所有类型':
+           _this.tableData_mid = _this.tableData_mid;
+           break;
+        default:
+          _this.tableData_mid = _this.tableData_mid.filter((value, index) => {
+            return value.from == _this.formInline.from;
+          });
+          break;
+      }
       _this.tableData = _this.tableData_mid.concat().splice(0, 10);
       _this.pagination.current = 1;
       _this.pagination.total = _this.tableData_mid.length;
@@ -150,7 +161,7 @@ export default {
       let _this = this;
       this.$refs[formName].validate(valid => {
         if (valid) {
-          _this.freshTableData(this.formInline.type);
+          _this.freshTableData(this.formInline.type, this.formInline.from);
         } else {
           console.log("error submit!!");
           return false;
