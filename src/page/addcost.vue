@@ -6,7 +6,7 @@
 		<div class="addget-form">
 			<el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
 				<el-form-item label="支出金额" prop="cost_count">
-					<el-input v-model="ruleForm.cost_count"></el-input>
+					<el-input v-model.number="ruleForm.cost_count"></el-input>
 				</el-form-item>
 				<el-form-item label="支出去向" prop="cost_from">
 					<el-select v-model="ruleForm.cost_from" placeholder="请选择支出去向">
@@ -45,119 +45,102 @@
 	</div>
 </template>
 <script>
-import { tabledata } from "../const/table.js";
-import {mmLink } from "../const/myMoney.js";
-import { cost } from "../const/costs";
-export default {
-  data() {
-    var checkAge = (rule, value, callback) => {
-      if (!value) {
-        return callback(new Error("支出金额不能为空"));
-      }
-      setTimeout(() => {
-        if (!this.$utils.isNumber(value)) {
-          callback(new Error("请输入数字值"));
-        } else {
-          if (value < 0) {
-            callback(new Error("必须大于0"));
-          } else {
-            callback();
-          }
-        }
-      }, 1000);
-    };
-    return {
-      mmLink: {},
-      tabledata: [],
-      ruleForm: {
-        cost_count: "",
-        cost_from: "",
-        cost_time: "",
-        cost_delivery: false,
-        cost_type: "",
-        cost_desc: ""
-      },
-      rules: {
-        cost_count: [
-          {
-            required: true,
-            message: "请输入支出金额",
-            trigger: "blur"
-          },
-          {
-            validator: checkAge,
-            trigger: "blur"
-          }
-        ],
-        cost_from: [
-          {
-            required: true,
-            message: "请选择支出去向",
-            trigger: "change"
-          }
-        ],
-        cost_time: [
-          {
-            type: "date",
-            required: true,
-            message: "请选择支出日期",
-            trigger: "change"
-          }
-        ],
-        cost_type: [
-          {
-            required: true,
-            message: "请至少选择一个支出形式",
-            trigger: "change"
-          }
-        ],
-        cost_desc: [
-          {
-            required: true,
-            message: "请简要描述此次支出",
-            trigger: "blur"
-          }
-        ]
-      }
-    };
-  },
-  created() {
-    let _this = this;
-    _this.mmLink = mmLink;
-    _this.tabledata = tabledata;
-  },
-  methods: {
-    submitForm(formName) {
-      let _this = this;
-      this.$refs[formName].validate(valid => {
-        if (valid) {
-          this.$notify({
-            title: "成功",
-            message: "新增成功",
-            type: "success"
-          });
+	import {
+		tabledata
+	} from "../const/table.js";
+	import {
+		mmLink
+	} from "../const/myMoney.js";
+	import {
+		cost
+	} from "../const/costs";
+	export default {
+		data() {
+			return {
+				mmLink: {},
+				tabledata: [],
+				ruleForm: {
+					cost_count: "",
+					cost_from: "",
+					cost_time: "",
+					cost_delivery: false,
+					cost_type: "",
+					cost_desc: ""
+				},
+				rules: {
+					cost_count: [{
+							required: true,
+							message: "请输入支出金额",
+							trigger: "blur"
+						},
+						{
+							type: "number",
+							message: "请输入数字值",
+              trigger: "blur"
+						}
+					],
+					cost_from: [{
+						required: true,
+						message: "请选择支出去向",
+						trigger: "change"
+					}],
+					cost_time: [{
+						type: "date",
+						required: true,
+						message: "请选择支出日期",
+						trigger: "change"
+					}],
+					cost_type: [{
+						required: true,
+						message: "请至少选择一个支出形式",
+						trigger: "change"
+					}],
+					cost_desc: [{
+						required: true,
+						message: "请简要描述此次支出",
+						trigger: "blur"
+					}]
+				}
+			};
+		},
+		created() {
+			let _this = this;
+			_this.mmLink = mmLink;
+			_this.tabledata = tabledata;
+		},
+		methods: {
+			submitForm(formName) {
+				let _this = this;
+				this.$refs[formName].validate(valid => {
+					if (valid) {
+						this.$notify({
+							title: "成功",
+							message: "新增成功",
+							type: "success"
+						});
 
-          //更新表格数据
-          _this.tabledata.push({
-            date: this.ruleForm.cost_time.toLocaleDateString(),
-            type: "cost",
-            way: this.ruleForm.cost_from,
-            desc: this.ruleForm.cost_desc,
-            count: this.ruleForm.cost_count,
-            from: this.ruleForm.cost_type,
-          });         
-          _this.mmLink.init = true;
-          _this.resetForm("ruleForm");
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
-    },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
-    }
-  }
-};
+						//更新表格数据
+						_this.tabledata.push({
+							date: this.ruleForm.cost_time.toLocaleDateString(),
+							type: "cost",
+							way: this.ruleForm.cost_from,
+							desc: this.ruleForm.cost_desc,
+							count: this.ruleForm.cost_count,
+							from: this.ruleForm.cost_type
+						});
+						_this.mmLink.init = true;
+						_this.resetForm("ruleForm");
+					} else {
+						console.log("error submit!!");
+						return false;
+					}
+				});
+			},
+			resetForm(formName) {
+				this.$refs[formName].resetFields();
+			}
+		}
+	};
+
 </script>
 

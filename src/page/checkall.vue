@@ -2,8 +2,12 @@
 	<div class="checkall">
 		<div class="check-form">
 			<el-form status-icon :inline="true" :model="formInline" ref="formInline" :rules="rules" class="demo-form-inline">
-				<el-form-item label="金额" prop="count">
-					<el-input v-model="formInline.count" placeholder="金额"></el-input>
+				<el-form-item label="目标" prop="from">
+					<el-select v-model="formInline.from" placeholder="收支目标">
+						<el-option label="银行卡" value="银行卡"></el-option>
+						<el-option label="现金" value="现金"></el-option>
+						<el-option label="羊城通" value="羊城通"></el-option>
+					</el-select>
 				</el-form-item>
 				<el-form-item label="类型" prop="type">
 					<el-select v-model="formInline.type" placeholder="交易类型">
@@ -53,41 +57,20 @@
 import { tabledata } from "../const/table.js";
 export default {
   data() {
-    var checkAge = (rule, value, callback) => {
-      if (!value) {
-        return callback(new Error("收入金额不能为空"));
-      }
-      setTimeout(() => {
-        if (!this.$utils.isNumber(value)) {
-          callback(new Error("请输入数字值"));
-        } else {
-          if (value < 0) {
-            callback(new Error("必须大于0"));
-          } else {
-            callback();
-          }
-        }
-      }, 1000);
-    };
     return {
-      tabledata: [],
       formInline: {
-        count: "",
+        from: "",
         type: "",
         enddate: "",
         begindate: ""
       },
       rules: {
-        count: [
+        from: [
           {
             required: true,
-            message: "请输入金额",
+            message: "请选择收支目标",
             trigger: "blur"
           },
-          {
-            validator: checkAge,
-            trigger: "blur"
-          }
         ],
         type: [
           {
@@ -116,6 +99,7 @@ export default {
 
       //table
       tableData: [],
+      tableData_mid: [],
       pagination: {
         pageSize: 10,
         total: 0,
@@ -125,8 +109,11 @@ export default {
   },
   created() {
     let _this = this;
-    _this.tableData = tabledata.concat().splice(0, 10);
-    for (let i of tabledata) {
+
+    //初始表格数据
+    _this.tableData_mid = tabledata.concat();
+    _this.tableData = _this.tableData_mid.concat().splice(0, 10);
+    for (let i of _this.tableData_mid) {
       switch (i.type) {
         case "cost":
           i.type = "支出";
@@ -136,26 +123,34 @@ export default {
           break;
       }
     }
-    _this.pagination.total = tabledata.length;
-    // this.tableData = table_data;
+    _this.pagination.total = _this.tableData_mid.length;
   },
   mounted() {},
   methods: {
     handleCurrentChange(a, b) {
-      this.tableData = tabledata.concat().splice((a - 1) * 10, 10);
+      this.tableData = this.tableData_mid.concat().splice((a - 1) * this.pagination.pageSize, this.pagination.pageSize);
       $(".check-form")[0].scrollIntoView();
+    },
+    freshTableData(mark) {
+      let _this = this;
+      switch(mark) {
+        case '所有类型':
+           _this.tableData_mid = tabledata.concat();
+           break;
+        default:
+          _this.tableData_mid = tabledata.filter((value, index) => {
+            return value.type == _this.formInline.type;
+          });
+      }
+      _this.tableData = _this.tableData_mid.concat().splice(0, 10);
+      _this.pagination.current = 1;
+      _this.pagination.total = _this.tableData_mid.length;
     },
     submitForm(formName) {
       let _this = this;
       this.$refs[formName].validate(valid => {
         if (valid) {
-          if (_this.formInline.type == "all") {
-            return;
-          } else {
-            _this.tableData = _this.tableData.filter((value, index) => {
-              return value.type == _this.formInline.type;
-            });
-          }
+          _this.freshTableData(this.formInline.type);
         } else {
           console.log("error submit!!");
           return false;
