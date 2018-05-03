@@ -1,49 +1,36 @@
 <template>
-	<el-menu :router="rt" default-active="/index" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#F56C6C"
+	<el-menu :router="rt" :default-active="active" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#F56C6C"
 	    text-color="#fff" active-text-color="#ffd04b">
-		<!-- <el-submenu index="1">
-			<template slot="title">
-				<i class="el-icon-location"></i>
-				<span>导航一</span>
-			</template>
-			<el-menu-item-group>
-				<template slot="title">分组一</template>
-				<el-menu-item index="1-1">选项1</el-menu-item>
-				<el-menu-item index="1-2">选项2</el-menu-item>
-			</el-menu-item-group>
-			<el-menu-item-group title="分组2">
-				<el-menu-item index="1-3">选项3</el-menu-item>
-			</el-menu-item-group>
-			<el-submenu index="1-4">
-				<template slot="title">选项4</template>
-				<el-menu-item index="1-4-1">选项1</el-menu-item>
-			</el-submenu>
-		</el-submenu> -->
-        <el-menu-item index="/index">
+        <el-menu-item index="/index" v-on:click="selectHandle('/index')">
 			<i class="el-icon-view"></i>
 			<span slot="title">消费总览</span>
 		</el-menu-item>
-		<el-menu-item index="/index/addget">
+		<el-menu-item index="/index/addget" v-on:click="selectHandle('/index/addget')">
 			<i class="el-icon-menu"></i>
 			<span slot="title">新增收入</span>
 		</el-menu-item>
-		<el-menu-item index="/index/addcost">
+		<el-menu-item index="/index/addcost" v-on:click="selectHandle('/index/addcost')">
 			<i class="el-icon-document"></i>
 			<span slot="title">新增支出</span>
 		</el-menu-item>
-		<el-menu-item index="/index/checkAll">
+		<el-menu-item index="/index/checkAll" v-on:click="selectHandle('/index/checkAll')">
 			<i class="el-icon-setting"></i>
 			<span slot="title">明细查询</span>
 		</el-menu-item>
 	</el-menu>
 </template>
 <script>
+	import{active} from "../const/menu.js";
 	export default {
 		data() {
 			return {
+				active: '',
 				rt: true,
 				url:['', 'addget', 'addcost', 'checkAll']
 			}
+		},
+		created() {
+			this.active = active.path.url;
 		},
 		methods: {
 			handleOpen(key, keyPath) {
@@ -51,6 +38,10 @@
 			},
 			handleClose(key, keyPath) {
 				console.log(key, keyPath);
+			},
+			selectHandle(path) {
+				this.active = path;
+				active.path.url = path;
 			}
 		}
 	}
