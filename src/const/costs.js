@@ -1,7 +1,8 @@
 let cost = {
 	'April': [],
 	'May': [
-		[{
+		[
+			{
 				type: 'cost',
 				count: 50,
 				way: '话费',
@@ -75,7 +76,14 @@ let cost = {
 				desc: '买早餐',
 				from: '银行卡',
 			},
-		]
+		],
+		[{
+			type: 'cost',
+			count: 4,
+			way: '交通',
+			desc: '地铁上班',
+			from: '羊城通'
+		}]
 	]
 };
 cost['April'][25] = [{

@@ -120,7 +120,7 @@ let tabledata = [{
 		date: '2018/5/2',
 		type: 'cost',
 		count: 4.5,
-		way:　'食物',
+		way: 　 '食物',
 		desc: '买早餐',
 		from: '银行卡',
 	},
@@ -135,23 +135,23 @@ let tabledata = [{
 	{
 		date: '2018/5/2',
 		type: 'cost',
-		count:50,
+		count: 50,
 		way: '交通',
 		desc: '羊城通充值',
 		from: '银行卡',
 	},
 	{
 		date: '2018/5/2',
-		type: 'cost',
-		count:4,
-		way: '交通',
 		desc: '地铁上班',
+		type: 'cost',
+		count: 4,
+		way: '交通',
 		from: '羊城通',
 	},
 	{
 		date: '2018/5/2',
 		type: 'cost',
-		count:4.5,
+		count: 4.5,
 		way: '食物',
 		desc: '买早餐',
 		from: '银行卡',
@@ -159,7 +159,7 @@ let tabledata = [{
 	{
 		date: '2018/5/2',
 		type: 'cost',
-		count:24,
+		count: 24,
 		way: '其他',
 		desc: '购买杀虫剂以及牙刷',
 		from: '银行卡',
@@ -168,7 +168,7 @@ let tabledata = [{
 		date: '2018/5/3',
 		type: 'cost',
 		count: 4,
-		way:　'交通',
+		way: 　 '交通',
 		desc: '地铁上班',
 		from: '羊城通',
 	},
@@ -176,11 +176,20 @@ let tabledata = [{
 		date: '2018/5/3',
 		type: 'cost',
 		count: 4.5,
-		way:　'食物',
+		way: 　 '食物',
 		desc: '买早餐',
 		from: '银行卡',
 	},
+	{
+		date: '2018/5/4',
+		type: 'cost',
+		count: 4,
+		way: '交通',
+		desc: '地铁上班',
+		from: '羊城通'
+	}
 ]
 export {
 	tabledata
 }
+
