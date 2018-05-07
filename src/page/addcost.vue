@@ -11,8 +11,11 @@
 				<el-form-item label="支出去向" prop="cost_from">
 					<el-select v-model="ruleForm.cost_from" placeholder="请选择支出去向">
 						<el-option label="食物" value="食物"></el-option>
-						<el-option label="交通出行" value="交通出行"></el-option>
+						<el-option label="交通" value="交通"></el-option>
 						<el-option label="话费" value="话费"></el-option>
+						<el-option label="流量" value="流量"></el-option>
+						<el-option label="网费" value="网费"></el-option>
+						<el-option label="房租" value="房租"></el-option>
 						<el-option label="其他" value="其他"></el-option>
 					</el-select>
 				</el-form-item>
