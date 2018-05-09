@@ -203,6 +203,30 @@ let tabledata = [{
 		way: '其他',
 		desc: '看病体检',
 		from: '银行卡'
+	},
+	{
+		date: '2018/5/8',
+		type: 　 'cost',
+		count: 4,
+		way: '交通',
+		desc: '地铁上班',
+		from: '羊城通',
+	},
+	{
+		date: '2018/5/8',
+		type: 'cost',
+		count: 50,
+		way: '交通',
+		desc: '滴滴去奥体',
+		from: '银行卡',
+	},
+	{
+		date: '2018/5/8',
+		type: 'cost',
+		count: 110,
+		way: '其他',
+		desc: '看病拿药',
+		from: '现金',
 	}
 ]
 export {
