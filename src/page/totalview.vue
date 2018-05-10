@@ -104,7 +104,8 @@ export default {
           {
             type: "category",
             boundaryGap: false,
-            data: []
+            data: [],
+            name: '日期',
           }
         ],
         yAxis: [
@@ -112,7 +113,8 @@ export default {
             type: "value",
             axisLabel: {
               formatter: "{value} ¥"
-            }
+            },
+            name: '消费金额'
           }
         ],
         series: [

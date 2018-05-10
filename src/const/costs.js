@@ -1,8 +1,7 @@
 let cost = {
 	'April': [],
 	'May': [
-		[
-			{
+		[{
 				type: 'cost',
 				count: 50,
 				way: '话费',
@@ -24,18 +23,17 @@ let cost = {
 				from: '银行卡',
 			}
 		],
-		[
-			{
+		[{
 				type: 'cost',
 				count: 4,
-				way:　'交通',
+				way: 　 '交通',
 				desc: '地铁上班',
 				from: '羊城通',
 			},
 			{
 				type: 'cost',
 				count: 4.5,
-				way:　'食物',
+				way: 　 '食物',
 				desc: '买早餐',
 				from: '银行卡',
 			},
@@ -48,31 +46,30 @@ let cost = {
 			},
 			{
 				type: 'cost',
-				count:50,
+				count: 50,
 				way: '交通',
 				desc: '羊城通充值',
 				from: '银行卡',
 			},
 			{
 				type: 'cost',
-				count:24,
+				count: 24,
 				way: '其他',
 				desc: '购买杀虫剂以及牙刷',
 				from: '银行卡',
 			}
 		],
-		[
-			{
+		[{
 				type: 'cost',
 				count: 4,
-				way:　'交通',
+				way: 　 '交通',
 				desc: '地铁上班',
 				from: '羊城通',
 			},
 			{
 				type: 'cost',
 				count: 4.5,
-				way:　'食物',
+				way: 　 '食物',
 				desc: '买早餐',
 				from: '银行卡',
 			},
@@ -100,26 +97,49 @@ let cost = {
 			from: '银行卡'
 		}],
 		[{
-			type: 　 'cost',
-			count: 4,
-			way: '交通',
-			desc: '地铁上班',
-			from: '羊城通',
-		},
-		{
-			type: 'cost',
-			count: 50,
-			way: '交通',
-			desc: '滴滴去奥体',
-			from: '银行卡',
-		},
-		{
-			type: 'cost',
-			count: 110,
-			way: '其他',
-			desc: '看病拿药',
-			from: '现金',
-		}
+				type: 　 'cost',
+				count: 4,
+				way: '交通',
+				desc: '地铁上班',
+				from: '羊城通',
+			},
+			{
+				type: 'cost',
+				count: 50,
+				way: '交通',
+				desc: '滴滴去奥体',
+				from: '银行卡',
+			},
+			{
+				type: 'cost',
+				count: 110,
+				way: '其他',
+				desc: '看病拿药',
+				from: '现金',
+			}
+		],
+		[
+			{
+				type: 'cost',
+				count: 4,
+				way: '交通',
+				desc: '地铁上班',
+				from: '羊城通',
+			},
+			{
+				type: 'cost',
+				count: 50,
+				way: '交通',
+				desc: '重置羊城通',
+				from: '银行卡',
+			},
+			{
+				type: 'cost',
+				count: 1000,
+				way: '其他',
+				desc: '处理交通违法罚款扣分',
+				from: '银行卡',
+			}
 		]
 	]
 };
@@ -190,3 +210,4 @@ cost['April'][29] = [{
 export {
 	cost
 }
+
