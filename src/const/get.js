@@ -27,6 +27,14 @@ gets['April'][25] = [{
 		to: '银行卡',
 	}
 ];
+gets['May'][9] = [{
+	type: 'get',
+	count: 50,
+	way: 　 '充值',
+	description: '充值羊城通',
+	to: '羊城通',
+}]
 export {
 	gets
 }
+
