@@ -191,12 +191,6 @@ let tabledata = [{
 	{
 		date: '2018/5/5',
 		type: 'cost',
-<<<<<<< HEAD
-		count: 35,
-		way: '食物',
-		desc: '买菜',
-		from: '银行卡'
-=======
 		count: 30,
 		way: '食物',
 		desc: '买菜',
@@ -251,7 +245,7 @@ let tabledata = [{
 		from: '羊城通',
 	},
 	{
-		date: '2018/5/9',		
+		date: '2018/5/9',
 		type: 'cost',
 		count: 50,
 		way: '交通',
@@ -259,13 +253,12 @@ let tabledata = [{
 		from: '银行卡',
 	},
 	{
-		date: '2018/5/9',	
+		date: '2018/5/9',
 		type: 'get',
 		count: 50,
 		way: 　 '充值',
 		desc: '充值羊城通',
 		from: '羊城通',
->>>>>>> adffb671d07d25260df36e1a8f337ce844fa7dd0
 	}
 ]
 export {
