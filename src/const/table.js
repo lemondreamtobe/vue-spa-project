@@ -187,9 +187,16 @@ let tabledata = [{
 		way: '交通',
 		desc: '地铁上班',
 		from: '羊城通'
+	},
+	{
+		date: '2018/5/5',
+		type: 'cost',
+		count: 35,
+		way: '食物',
+		desc: '买菜',
+		from: '银行卡'
 	}
 ]
 export {
 	tabledata
 }
-
