@@ -2,7 +2,7 @@
   <header class="header">
     <div class="logo">
       <a class="logo-img"><img src="../../static/img/logo.png"></a>
-      <a class="logo-title" href="/" title="回到登录页">开支记录后台管理系统</a>
+      <a class="logo-title" @click="handleCommand('exit')" title="回到登录页">开支记录后台管理系统</a>
       <!-- <a class="logo-user">用户:{{user}}</a> -->
       <el-dropdown trigger="click" class="logo-user" @command="handleCommand">
         <span class="el-dropdown-link">
@@ -90,8 +90,11 @@ export default {
     handleCommand(command) {
       let  _this = this;
       if (command == 'exit') {
-        this.$confirm('确认退出系统？')
-          .then(_ => {
+        this.$confirm('确认退出系统?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(_ => {
              _this.$router.push({ path: '/' });
           })
           .catch(_ => {});
