@@ -259,6 +259,38 @@ let tabledata = [{
 		way: 　 '充值',
 		desc: '充值羊城通',
 		from: '羊城通',
+	},
+	{
+		date: '2018/5/10',	
+		type: 'cost',
+		count: 　3,
+		way: 　 '食物',
+		desc: '买早餐',
+		from: '银行卡',
+	},
+	{
+		date: '2018/5/10',	
+		type: 'cost',
+		count: 　3,
+		way: 　 '交通',
+		desc: '地铁上班',
+		from: '羊城通',
+	},
+	{
+		date: '2018/5/11',	
+		type: 'cost',
+		count: 　3,
+		way: 　 '食物',
+		desc: '买早餐',
+		from: '银行卡',
+	},
+	{
+		date: '2018/5/11',	
+		type: 'cost',
+		count: 　3,
+		way: 　 '交通',
+		desc: '地铁上班',
+		from: '羊城通',
 	}
 ]
 export {
