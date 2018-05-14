@@ -118,8 +118,7 @@ let cost = {
 				from: '现金',
 			}
 		],
-		[
-			{
+		[{
 				type: 'cost',
 				count: 4,
 				way: '交通',
@@ -242,4 +241,3 @@ cost['April'][29] = [{
 export {
 	cost
 }
-

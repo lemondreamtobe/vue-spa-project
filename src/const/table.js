@@ -245,7 +245,7 @@ let tabledata = [{
 		from: '羊城通',
 	},
 	{
-		date: '2018/5/9',		
+		date: '2018/5/9',
 		type: 'cost',
 		count: 50,
 		way: '交通',
@@ -253,7 +253,7 @@ let tabledata = [{
 		from: '银行卡',
 	},
 	{
-		date: '2018/5/9',	
+		date: '2018/5/9',
 		type: 'get',
 		count: 50,
 		way: 　 '充值',
@@ -296,4 +296,3 @@ let tabledata = [{
 export {
 	tabledata
 }
-
