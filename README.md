@@ -13,7 +13,6 @@
 ``` bash
 # firstly, you should fork this repository
 click the button of 'fork' or 'Clone or download'
-make sure local has all that files
 
 # install dependencies
 npm install

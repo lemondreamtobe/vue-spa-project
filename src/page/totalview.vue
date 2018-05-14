@@ -275,7 +275,7 @@
 						name: '比重',
 						type: 'pie',
             radius: ['40%', '60%'],
-             center: ["50%", "60%"],
+            center: ["50%", "60%"],
 						itemStyle: {
 							normal: {
 								label: {
