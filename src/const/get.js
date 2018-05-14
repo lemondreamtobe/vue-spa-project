@@ -33,7 +33,14 @@ gets['May'][9] = [{
 	way: 　 '充值',
 	description: '充值羊城通',
 	to: '羊城通',
-}]
+}];
+gets['May'][10] = [{
+	type: 'get',
+	count: 5000,
+	way: 　 '工资',
+	description: '发薪水了',
+	to: '银行卡',
+}];
 export {
 	gets
 }
