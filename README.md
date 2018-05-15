@@ -6,7 +6,7 @@
 > vue.js + vue-router + webpack + vue-element + vue-escharts
 
 ## 项目预览地址
-> [点击这里预览项目 账号密码:admin](http://www.my-web-project.cn)
+> [click here to view! user&password = admin](http://www.my-web-project.cn)
 
 ## 项目运行方式
 
