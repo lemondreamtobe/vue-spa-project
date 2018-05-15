@@ -3,13 +3,18 @@
 		<el-form-item prop="phone">
 			<el-input @keyup.enter.native="handleLogin" v-model="loginForm.phone" auto-complete="off" placeholder="请输入手机号码"></el-input>
 		</el-form-item>
-		<el-form-item prop="code">
-			<el-input @keyup.enter.native="handleLogin" v-model="loginForm.code" auto-complete="off" placeholder="请输入验证码">
-				<template slot="append">
-					<span @click="handleSend" class="msg-text" :class="[{display:msgKey}]">{{msgText}}</span>
-				</template>
-			</el-input>
-		</el-form-item>
+		<el-row>
+			<el-col :span="18">
+				<el-form-item prop="code">
+					<el-input @keyup.enter.native="handleLogin" v-model="loginForm.code" auto-complete="off" placeholder="请输入验证码">
+
+					</el-input>
+				</el-form-item>
+			</el-col>
+			<el-col :span="5">
+				<span @click="handleSend" class="msg-text yzm" :class="[{display:msgKey}]">{{msgText}}</span>
+			</el-col>
+		</el-row>
 		<!-- <el-form-item> -->
 			<el-button class="login-btn" type="primary" @click.native.prevent="handleLogin">登录</el-button>
 		<!-- </el-form-item> -->
@@ -28,7 +33,7 @@
 		data() {
 			const validatePhone = (rule, value, callback) => {
 
-				if (util.isvalidatemobile(value)[0]) {
+				if (value && util.isvalidatemobile(value)[0]) {
 					callback(new Error(util.isvalidatemobile(value)[1]));
 				} else {
 					callback();
@@ -36,8 +41,8 @@
 			};
 			const validateCode = (rule, value, callback) => {
 
-				if (value.length != 4) {
-					callback(new Error("请输入4位数的验证码"));
+				if (value && value.length != 4 && value != this.phone_code) {
+					callback(new Error("请输入正确的4位数的验证码"));
 				} else {
 					callback();
 				}
@@ -46,21 +51,36 @@
 				msgText: MSGINIT,
 				msgTime: MSGTIME,
 				msgKey: false,
+				phone_code: '',
 				loginForm: {
 					phone: "15602295841",
 					code: ""
 				},
 				loginRules: {
-					phone: [{
-						required: true,
-						trigger: "blur",
-						validator: validatePhone
-					}],
-					code: [{
-						required: true,
-						trigger: "blur",
-						validator: validateCode
-					}]
+					phone: [
+						{
+							required: true,
+							message: "请填写手机号码",
+							trigger: "blur"
+						},
+						{
+							required: true,
+							trigger: "blur",
+							validator: validatePhone
+						}
+					],
+					code: [
+						{
+							required: true,
+							message: "请填写验证码",
+							trigger: "blur"
+						},
+						{
+							required: true,
+							trigger: "blur",
+							validator: validateCode
+						},
+					]
 				}
 			};
 		},
@@ -75,6 +95,11 @@
 				if (this.msgKey) return;
 				this.msgText = MSGSCUCCESS.replace("${time}", this.msgTime);
 				this.msgKey = true;
+				this.phone_code = util.getRandom(4).join("");
+				this.$message({
+					message: '验证码发送成功!4位验证码是: ' + this.phone_code,
+					type: 'success'
+				});
 				const time = setInterval(() => {
 					this.msgTime--;
 					this.msgText = MSGSCUCCESS.replace("${time}", this.msgTime);

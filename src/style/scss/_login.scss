@@ -39,6 +39,25 @@
 		background: rgb(238, 238, 238);
 		border-radius: 4px;
 	}
+	.el-input-group__append{
+		cursor: pointer;
+	}
+	.yzm{
+		background-color: #f5f7fa;
+		color: #909399;
+		vertical-align: middle;
+		display: table-cell;
+		position: relative;
+		border: 1px solid #dcdfe6;
+		border-radius: 4px;
+		width: 100%;
+		white-space: nowrap;
+		line-height: 38px;
+		font-size: 14px;
+		display: inline-block;
+		text-align: center;
+		cursor: pointer;
+	}
 }
 
 #login-code .el-form-item__content {
@@ -59,3 +78,6 @@
 .bg-purple {}
 
 .grid-content {}
+.el-input-group__append+.el-input__suffix{
+	right: 110px !important;
+}
