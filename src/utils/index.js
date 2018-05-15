@@ -13,6 +13,27 @@ export default {
 		'November',
 		'December',
 	],
+	setLogin(params) {
+
+		if (localStorage && localStorage.setItem) {
+			localStorage.setItem('login', JSON.stringify(params));
+			setTimeout(function() { 
+                localStorage.removeItem('login');
+            }, 2 * 1000 * 60 * 60);
+		}
+	},
+	quitLogin() {
+
+		if (localStorage && localStorage.removeItem) {
+			localStorage.removeItem('login');
+		}
+	},
+	checkLogin() {
+
+		if (localStorage && localStorage.getItem) {		
+			return localStorage.getItem('login') ? JSON.parse(localStorage.getItem('login')) : null;					
+		}
+	},
 	isNumber(val) {
 		var regPos = /^\d+(\.\d+)?$/; //非负浮点数
 		var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数

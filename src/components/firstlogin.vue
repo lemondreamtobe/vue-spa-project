@@ -135,6 +135,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
+          this.$utils.setLogin(this.ruleForm);
           this.$router.push({
             path: "index"
           });

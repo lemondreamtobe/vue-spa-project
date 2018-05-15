@@ -95,6 +95,7 @@ export default {
           cancelButtonText: '取消',
           type: 'warning'
         }).then(_ => {
+              this.$utils.quitLogin();
              _this.$router.push({ path: '/' });
           })
           .catch(_ => {});
@@ -117,6 +118,7 @@ export default {
             });
              _this.USER.PASSWORD.key = _this.form.password;
             setTimeout(function() {
+              this.$utils.quitLogin();
               _this.$router.push({ path: '/' });
             }, 500);
           } else {

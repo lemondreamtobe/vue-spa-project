@@ -107,6 +107,14 @@
 			};
 		},
 		created() {
+
+			if (!this.$utils.checkLogin()) {
+				this.$message({
+					message: '请重新进行登录认证',
+					type: 'warning'
+				 });
+				 this.$router.push({ path: '/' });
+			};
 			let _this = this;
 			_this.mmLink = mmLink;
 			_this.tabledata = tabledata;

@@ -120,7 +120,7 @@
 						axisLabel: {
 							formatter: "{value} ¥"
 						},
-						name: '消费金额'
+						// name: '消费金额'
 					}],
 					series: [{
 						name: "消费情况",
@@ -256,11 +256,11 @@
 
 				//占比配置项
 				ringoption_rate: {
-           title: {
-            text: "过去30日消费占比",
-            subtext: "支出/收入的比率",
-            x: "center"
-          },
+					title: {
+						text: "历史消费占比",
+						subtext: "支出/收入的比率",
+						x: "center"
+					},
 					tooltip: {
 						trigger: 'item',
 						formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -274,15 +274,15 @@
 					series: [{
 						name: '比重',
 						type: 'pie',
-            radius: ['40%', '60%'],
-            center: ["50%", "60%"],
+						radius: ['40%', '60%'],
+						center: ["50%", "60%"],
 						itemStyle: {
 							normal: {
 								label: {
-									show: false
+									show: true
 								},
 								labelLine: {
-									show: false
+									show: true
 								}
 							},
 							emphasis: {
@@ -296,16 +296,28 @@
 								}
 							}
 						},
-						data: [
-               {value:0, name:'收入'},
-               {value:0, name:'支出'},
-            ]
+						data: [{
+								value: 0,
+								name: '收入'
+							},
+							{
+								value: 0,
+								name: '支出'
+							},
+						]
 					}]
 				}
 			};
 		},
 		created() {
 
+			if (!this.$utils.checkLogin()) {
+				 this.$message({
+					message: '请重新进行登录认证',
+					type: 'warning'
+				 });
+				 this.$router.push({ path: '/' });
+			};
 			//取得数据的引用，方便调用
 			let _this = this;
 			this.items = myMoney;

@@ -90,7 +90,7 @@
 				this.$refs.loginForm.validate(valid => {
 
 					if (valid) {
-                        // this.$router.push({ path: this.tagWel.value });
+                        this.$utils.setLogin(this.loginForm);
                         this.$router.push({ path: 'index'});
 					} else {
 						console.log('error submit!!');
