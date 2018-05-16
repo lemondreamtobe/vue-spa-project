@@ -7,14 +7,21 @@ import TotalView from '@/page/totalview'
 import AddGet from '@/page/addget'
 import AddCost from '@/page/addcost'
 import CheckAll from '@/page/checkall'
+import Test from '@/page/test'
 
 Vue.use(Router)
 
 export default new Router({
-	routes: [{
+	routes: [
+		{
 			path: '/',
 			component: Login
-		}, {
+		},
+		{
+			path: '/test',
+			component: Test
+		},
+		{
 			path: '/index',
 			component: Index,
 			children: [{
@@ -51,3 +58,4 @@ export default new Router({
 		}
 	}
 })
+
