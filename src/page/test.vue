@@ -28,30 +28,35 @@
 		<!-- 单项数据流 -->
 		<!-- <blog-content content="单向数据流把传入的属性作为本地data保存" ps="也可以用复合属性保存"></blog-content> -->
 
-        <!-- prop验证 -->
-        <!-- <blog-yz v-bind:propA="propA" propB="2" propC="1" propF="success"></blog-yz>
+		<!-- prop验证 -->
+		<!-- <blog-yz v-bind:propA="propA" propB="2" propC="1" propF="success"></blog-yz>
         <base-input label="禁用特性继承" value="213" class="al" data-icon="icon" id="ad"></base-input> -->
 
-         <button @click="show = !show">
-                点击这里有惊喜
-            </button>
-            
-            <div>
-                <transition
-                name="custom-classes-transition"
-                enter-active-class="animated flip"
-                leave-active-class="animated hinge"
-                :duration="{ enter: 2500, leave: 2800 }"
-            >
-                <label v-if="show" style="text-align:center">hello world!</label>
-                </transition>
-            </div>
-            
+		<button @click="show = !show">
+			点击这里有惊喜
+		</button>
+
+		<div>
+			<transition name="custom-classes-transition" enter-active-class="animated flip" leave-active-class="animated hinge" :duration="{ enter: 2500, leave: 2800 }">
+				<label v-if="show" style="text-align:center">hello world!</label>
+			</transition>
+		</div>
+		<p>{{ count }}</p>
+		<p>
+			<button @click="add(10)">+</button>
+			<button @click="deletes(15)">-</button>
+		</p>
+		<blog-post v-bind:postTitle="countPlusLocalState" ps="静态传入字符串"></blog-post>
+		<ul>
+			<li v-for="li in lis" :key="li.name">{{li.name}}</li>
+		</ul>
 	</div>
 </template>
 <script>
 	import Vue from "vue";
-
+	import { mapState } from 'vuex'
+	import { mapGetters } from 'vuex'
+	import { mapMutations } from 'vuex'
 	//全局注册
 	Vue.component('component-a', {
 		data: function () {
@@ -134,7 +139,7 @@
 			},
 			// 自定义验证函数
 			propF: {
-                required: true,
+				required: true,
 				validator: function (value) {
 					// 这个值必须匹配下列字符串中的一个
 					return ['success', 'warning', 'danger'].indexOf(value) !== -1
@@ -144,11 +149,11 @@
 		template: `<div>
                         <label>{{propA}} : {{propB}} : {{propC}}:{{propD}}:{{propE}}:{{propF}}</label>                     
                     </div>`
-    });
-    Vue.component('base-input', {
-        inheritAttrs: false,
-        props: ['label', 'value'],
-        template: `
+	});
+	Vue.component('base-input', {
+		inheritAttrs: false,
+		props: ['label', 'value'],
+		template: `
             <label>
             {{ label }}
             <input
@@ -158,7 +163,7 @@
             >
             </label>
         `
-        })
+	})
 	export default {
 		components: {
 			componentb
@@ -166,21 +171,54 @@
 		data() {
 			return {
 				title: 'world hello',
-                show: true,
-                propA: 1,
+				show: true,
+				propA: 1,
+				localCount: 100,
 				obj: {
 					a: 1,
 					y: 2
 				}
 			}
 		},
+		computed: Object.assign(
+			{},
+			mapGetters({
+				// 映射 `this.doneCount` 为 `store.getters.doneTodosCount`
+				lis: 'doneTodos'
+			}),
+			mapState({
+				// 箭头函数可使代码更简练
+				count: state => state.count,
+
+				// 传字符串参数 'count' 等同于 `state => state.count`
+				countAlias: 'count',
+
+				// 为了能够使用 `this` 获取局部状态，必须使用常规函数
+				countPlusLocalState (state) {
+				  return state.count + this.localCount
+				}
+			})
+		),
 		created() {
 
 
 		},
-		methods: {
+		methods: Object.assign(
+			{
+				//自定义
 
-		}
+			},
+			mapMutations([
+				'increment', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
+
+				// `mapMutations` 也支持载荷：
+				'decrement' // 将 `this.incrementBy(amount)` 映射为 `this.$store.commit('incrementBy', amount)`
+			]),
+			mapMutations({
+				add: 'increment', // 将 `this.add()` 映射为 `this.$store.commit('increment')`
+				deletes: 'decrement'
+			})
+		)
 	};
 
 </script>

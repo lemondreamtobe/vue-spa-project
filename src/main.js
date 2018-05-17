@@ -6,6 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import $ from 'jquery'
 import './assets/css/bootstrap.min.css'
 import Vuex from 'vuex'
+import store from './vuex/store'
 // import './assets/js/bootstrap.min'
 // 引用API文件
 import api from './api/index.js'
@@ -58,6 +59,7 @@ requireComponent.keys().forEach(fileName => {
 /* eslint-disable no-new */
 new Vue({
 	el: '#app',
+	store,
 	router,
 	template: '<App/>',
 	components: {
