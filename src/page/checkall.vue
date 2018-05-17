@@ -49,7 +49,7 @@
 			</el-table>
 		</div>
 		<div class="check-pagnation">
-			<el-pagination @current-change="handleCurrentChange" :current-page.sync="pagination.current" :total="pagination.total" :page-size="pagination.pageSize" background layout="prev, pager, next">
+			<el-pagination @current-change="handleCurrentChange" :current-page.sync="pagination.current" :total="pagination.total" :page-size="pagination.pageSize" background layout="total, prev, pager, next">
 			</el-pagination>
 		</div>
 	</div>
