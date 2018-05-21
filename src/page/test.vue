@@ -45,6 +45,7 @@
 		<p>
 			<button @click="add(10)">+</button>
 			<button @click="deletes(15)">-</button>
+			<button @click="addyibu">异步</button>
 		</p>
 		<blog-post v-bind:postTitle="countPlusLocalState" ps="静态传入字符串"></blog-post>
 		<ul>
@@ -57,6 +58,7 @@
 	import { mapState } from 'vuex'
 	import { mapGetters } from 'vuex'
 	import { mapMutations } from 'vuex'
+	import { mapActions } from 'vuex'
 	//全局注册
 	Vue.component('component-a', {
 		data: function () {
@@ -206,6 +208,9 @@
 		methods: Object.assign(
 			{
 				//自定义
+				addAsnc() {
+					this.$store.dispatch('increment');
+				}
 
 			},
 			mapMutations([
@@ -217,8 +222,11 @@
 			mapMutations({
 				add: 'increment', // 将 `this.add()` 映射为 `this.$store.commit('increment')`
 				deletes: 'decrement'
+			}),
+			mapActions({
+				addyibu: 'increment' // 将 `this.add()` 映射为 `this.$store.dispatch('increment')`
 			})
-		)
+		),
 	};
 
 </script>

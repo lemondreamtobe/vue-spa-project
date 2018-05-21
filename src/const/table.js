@@ -444,6 +444,38 @@ let tabledata = [{
 		desc: '地铁上班',
 		from: '羊城通',
 	},
+	{
+		date: '2018/5/19',	
+		type: 'cost',
+		count: 　30,
+		way: 　 '食物',
+		desc: '外卖',
+		from: '银行卡',
+	},
+	{
+		date: '2018/5/20',	
+		type: 'cost',
+		count: 15,
+		way: 　 '食物',
+		desc: '买菜',
+		from: '银行卡',
+	},
+	{
+		date: '2018/5/21',	
+		type: 'cost',
+		count: 　5,
+		way: 　 '食物',
+		desc: '买早餐',
+		from: '银行卡',
+	},
+	{
+		date: '2018/5/21',	
+		type: 'cost',
+		count: 　3,
+		way: 　 '交通',
+		desc: '地铁上班',
+		from: '羊城通',
+	},
 ]
 export {
 	tabledata
