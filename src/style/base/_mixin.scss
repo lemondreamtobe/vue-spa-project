@@ -1,0 +1,14 @@
+@mixin warnword {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+@mixin info-tab($normal:yellow, $hover:red, $visited:pink) {
+    color: $normal;
+    width: 100px;
+    height: 100px;
+    &:hover { background: $hover; }
+    display: inline-block;
+    background: $visited;
+    text-align: center;
+  }

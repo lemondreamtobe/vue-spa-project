@@ -51,6 +51,26 @@
 		<ul>
 			<li v-for="li in lis" :key="li.name">{{li.name}}</li>
 		</ul>
+		<div></div>
+		<div class="t1">
+
+		</div>
+		<div></div>
+		<span>1</span>
+		<span>1</span>
+		<span>1</span>
+		<span>1</span>
+		<label class="t2">警告你别过来</label>
+		<div>
+			<div class="t3">1</div>
+			<div class="t3">23</div>
+			<div class="t3">456</div>
+		</div>
+		<div>
+			<div class="t4"><span>1</span></div>
+			<div class="t4"><span>23</span></div>
+			<div class="t4"><span>456</span></div>
+		</div>
 	</div>
 </template>
 <script>

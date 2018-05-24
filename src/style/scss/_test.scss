@@ -1,3 +1,6 @@
+@import '../base/_color';
+@import '../base/_mixin';
+
 #test{
     height: 500px;
     text-align: center;
@@ -7,4 +10,59 @@
     label{
         font-size: 70px;
     }
+    .t1{
+        $border-type: solid;
+        border: 1px $border-type red;
+        height: 100px;
+        &:hover { 
+            $js_color: red;
+            background: $js_color 
+        }
+        body.ie &{
+            border: 1px $border-type blue;
+        }
+        ~ span{
+            color: tomato;
+        }
+        + div{
+            border: 1px $border-type tomato;
+            height: 10px;
+        }
+    }
+    .t2{
+        @include warnword
+    }
+    .t3{
+        @include info-tab(red, red, white);
+        &:last-child{
+            @include info-tab(pink, red, white);
+        }
+        &:nth-child(1){
+            @include info-tab();
+        }
+    }
+    .t4{
+        @extend .error;
+        border-width: 3px;
+    }
 }
+.error {
+    border: 1px solid red;
+    background-color: #fdd;
+  }
+  .error span{  //应用到.seriousError a
+    color: red;
+    font-weight: 100;
+  }
+  h1.error { //应用到hl.seriousError
+    font-size: 1.2rem;
+  }
+// 个人对Sass理解：
+// Scss是Sass的扩展语法，完全支持CSS3,并继承了Sass强大的功能，不同处在于写法上用分号和扩折号
+// 对Sass的整个理解如下
+// 宗旨在于能不重复就不重复。围绕该宗旨有以下的功能实现
+// Sass提供变量，最基本的工具。让CSS的值变得可重用，可用范围视{}号区域而定
+// 选择器规则和属性规则嵌套机制使得结构清晰，&父级选择器从旁给予了便利
+// @import机制使得多文件串联实现了可能，也可以在选择器中使用，不同于CSS import，SASS import会直接导入完文件在加载 更快捷
+// @mixin混合器让视觉上的重复不在繁杂，CSS变得可维护和语义化，原理在于混合器中代码的移植。
+// @extend继承机制让类名有了语义化关系，CSS变得整洁可维护， 原理在于选择器标签的重用。
