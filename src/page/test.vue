@@ -210,7 +210,7 @@
 			}),
 			mapState({
 				// 箭头函数可使代码更简练
-				pointbegin: state => state.count,
+				count: state => state.count,
 
 				// 传字符串参数 'count' 等同于 `state => state.count`
 				countAlias: 'count',
