@@ -3,7 +3,7 @@
 > A SPA of Vue.js project
 
 ## 技术栈
-> vue.js + vue-router + webpack + vue-element + vue-escharts
+> vue.js + vue-router + vue-element + vue-escharts
 
 ## 项目预览地址
 > [click here to view! user&password = admin](http://www.my-web-project.cn)
