@@ -611,6 +611,22 @@ let tabledata = [{
 		way: 　 '交通',
 		desc: '地铁上班',
 		from: '羊城通',
+	},
+	{
+		date: '2018/5/29',
+		type: 'cost',
+		count: 35,
+		way: 　 '食物',
+		desc: '便利店购买食品',
+		from: '银行卡',
+	},
+	{
+		date: '2018/5/29',
+		type: 'cost',
+		count: 5,
+		way: 　 '交通',
+		desc: '地铁出行',
+		from: '羊城通',
 	}
 ]
 export {
