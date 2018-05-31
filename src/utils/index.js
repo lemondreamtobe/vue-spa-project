@@ -147,7 +147,7 @@ export default {
 		let length = 30;
 		let cost_count = [];
 		let cost_day = [];
-		let now = new Date();
+		let now = new Date('2018-5-31');
 		let current_month = this.monthCollect[now.getMonth()];
 		for (let i = 0; i < obj[current_month].length; i++) {
 
@@ -170,8 +170,7 @@ export default {
 			cost_count.splice(0, distance);
 			return {
 				count: cost_count,
-				　
-				day: day_count
+				day: cost_day
 			}
 		} else if (cost_count.length < 30) {
 			let prev_cost_count = [];
@@ -268,7 +267,7 @@ export default {
 		];
 
 		//根据选择时间
-		let now = new Date();
+		let now = new Date('2018-5-31');
 		let current_month = this.monthCollect[now.getMonth()];
 		let datalen = obj[current_month].length;
 
@@ -348,7 +347,7 @@ export default {
 		];
 
 		//根据选择时间
-		let now = new Date();
+		let now = new Date('2018-5-31');
 		let current_month = this.monthCollect[now.getMonth()];
 		let datalen = obj[current_month].length;
 

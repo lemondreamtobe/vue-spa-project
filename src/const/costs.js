@@ -485,7 +485,46 @@ let cost = {
 				desc: '地铁出行',
 				from: '羊城通',
 			}
-		]
+		],
+		[
+			{
+				type: 'cost',
+				count: 3,
+				way: 　 '食物',
+				desc: '早餐',
+				from: '银行卡',
+			},
+			{
+				type: 'cost',
+				count: 5,
+				way: 　 '交通',
+				desc: '地铁出行',
+				from: '羊城通',
+			}
+		],
+		[
+			{
+				type: 'cost',
+				count: 3,
+				way: 　 '食物',
+				desc: '早餐',
+				from: '银行卡',
+			},
+			{
+				type: 'cost',
+				count: 5,
+				way: 　 '交通',
+				desc: '地铁出行',
+				from: '羊城通',
+			},
+			{
+				type: 'cost',
+				count: 105,
+				way: 　 '其他',
+				desc: '买书',
+				from: '银行卡',
+			}
+		],
 	]
 };
 cost['April'][25] = [{
